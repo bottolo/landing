@@ -1,4 +1,4 @@
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
+import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import Dither from "../blocks/Backgrounds/Dither/Dither.tsx";
 
@@ -17,7 +17,13 @@ export const Route = createRootRoute({
 					waveSpeed={0.05}
 				/>
 			</div>
-			<Outlet />
+			<main
+				className={
+					"relative h-screen w-screen flex flex-col items-center justify-center"
+				}
+			>
+				<Outlet />
+			</main>
 			<TanStackRouterDevtools />
 		</>
 	),

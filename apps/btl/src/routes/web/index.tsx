@@ -1,28 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import PixelCard from "../blocks/Components/PixelCard/PixelCard.tsx";
+import PixelCard from "../../blocks/Components/PixelCard/PixelCard.tsx";
 
-export const Route = createFileRoute("/")({
-	component: Index,
+export const Route = createFileRoute("/web/")({
+	component: RouteComponent,
 });
 
-function Index() {
+function RouteComponent() {
 	const galleryElements = [
-		{
-			text: "web",
-			link: "/web",
-		},
-		{
-			text: "games",
-			link: "/games",
-		},
-		{
-			text: "about",
-			link: "/about",
-		},
-		{
-			text: "substack...?",
-			link: "/about",
-		},
+		{ image: "", text: "cccd", link: "/web" },
+		{ image: "", text: "mediation", link: "/games" },
+		{ image: "", text: "pensiero selvaggio", link: "/about" },
+		{ image: "", text: "eridanus", link: "/web" },
 	];
 
 	return (

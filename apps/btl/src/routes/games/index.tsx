@@ -1,28 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import PixelCard from "../blocks/Components/PixelCard/PixelCard.tsx";
+import PixelCard from "../../blocks/Components/PixelCard/PixelCard.tsx";
 
-export const Route = createFileRoute("/")({
-	component: Index,
+export const Route = createFileRoute("/games/")({
+	component: RouteComponent,
 });
 
-function Index() {
+function RouteComponent() {
 	const galleryElements = [
-		{
-			text: "web",
-			link: "/web",
-		},
-		{
-			text: "games",
-			link: "/games",
-		},
-		{
-			text: "about",
-			link: "/about",
-		},
-		{
-			text: "substack...?",
-			link: "/about",
-		},
+		{ image: "", text: "noclip", link: "/web" },
+		{ image: "", text: "octant", link: "/games" },
+		{ image: "", text: "visio", link: "/about" },
+		{ image: "", text: "apus", link: "/web" },
 	];
 
 	return (
@@ -31,7 +19,7 @@ function Index() {
 				<Link href={element?.link} className={"cursor-pointer"}>
 					<PixelCard key={element?.text}>
 						<div className={"absolute"}>
-							<pre className={"text-white"}>{element?.text}</pre>
+							<pre>{element?.text}</pre>
 						</div>
 					</PixelCard>
 				</Link>
