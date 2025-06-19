@@ -1,9 +1,5 @@
-/*
-	Installed from https://reactbits.dev/ts/tailwind/
-*/
-
-import { useEffect, useRef } from "react";
-import { JSX } from "react";
+import type { JSX } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 class Pixel {
 	width: number;
@@ -191,6 +187,8 @@ export default function PixelCard({
 		null,
 	);
 	const timePreviousRef = useRef(performance.now());
+	const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
+
 	const reducedMotion = useRef(
 		window.matchMedia("(prefers-reduced-motion: reduce)").matches,
 	).current;
@@ -201,31 +199,47 @@ export default function PixelCard({
 	const finalColors = colors ?? variantCfg.colors;
 	const finalNoFocus = noFocus ?? variantCfg.noFocus;
 
-	const initPixels = () => {
+	const colorsArray = useMemo(() => finalColors.split(","), []);
+
+	const initPixels = useCallback(() => {
 		if (!containerRef.current || !canvasRef.current) return;
 
 		const rect = containerRef.current.getBoundingClientRect();
 		const width = Math.floor(rect.width);
 		const height = Math.floor(rect.height);
-		const ctx = canvasRef.current.getContext("2d");
 
-		canvasRef.current.width = width;
-		canvasRef.current.height = height;
+		const dpr = Math.min(window.devicePixelRatio, 2);
+		const scaledWidth = Math.floor(width * dpr);
+		const scaledHeight = Math.floor(height * dpr);
+
+		canvasRef.current.width = scaledWidth;
+		canvasRef.current.height = scaledHeight;
 		canvasRef.current.style.width = `${width}px`;
 		canvasRef.current.style.height = `${height}px`;
 
-		const colorsArray = finalColors.split(",");
-		const pxs = [];
-		for (let x = 0; x < width; x += parseInt(finalGap.toString(), 10)) {
-			for (let y = 0; y < height; y += parseInt(finalGap.toString(), 10)) {
+		const ctx = canvasRef.current.getContext("2d");
+		if (!ctx) return;
+
+		ctxRef.current = ctx;
+
+		ctx.scale(dpr, dpr);
+
+		// Optimize canvas context settings
+		ctx.imageSmoothingEnabled = true;
+		ctx.imageSmoothingQuality = "low";
+
+		const pxs: Pixel[] = [];
+		const gapInt = parseInt(finalGap.toString(), 10);
+
+		for (let x = 0; x < width; x += gapInt) {
+			for (let y = 0; y < height; y += gapInt) {
 				const color =
 					colorsArray[Math.floor(Math.random() * colorsArray.length)];
-
 				const dx = x - width / 2;
 				const dy = y - height / 2;
 				const distance = Math.sqrt(dx * dx + dy * dy);
 				const delay = reducedMotion ? 0 : distance;
-				if (!ctx) return;
+
 				pxs.push(
 					new Pixel(
 						canvasRef.current,
@@ -240,9 +254,9 @@ export default function PixelCard({
 			}
 		}
 		pixelsRef.current = pxs;
-	};
+	}, [colorsArray, reducedMotion]);
 
-	const doAnimate = (fnName: keyof Pixel) => {
+	const doAnimate = useCallback((fnName: keyof Pixel) => {
 		animationRef.current = requestAnimationFrame(() => doAnimate(fnName));
 		const timeNow = performance.now();
 		const timePassed = timeNow - timePreviousRef.current;
@@ -251,59 +265,93 @@ export default function PixelCard({
 		if (timePassed < timeInterval) return;
 		timePreviousRef.current = timeNow - (timePassed % timeInterval);
 
-		const ctx = canvasRef.current?.getContext("2d");
-		if (!ctx || !canvasRef.current) return;
+		const ctx = ctxRef.current;
+		const canvas = canvasRef.current;
+		if (!ctx || !canvas) return;
 
-		ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+		// Single clear operation for entire canvas
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 		let allIdle = true;
-		for (let i = 0; i < pixelsRef.current.length; i++) {
-			const pixel = pixelsRef.current[i];
+		const pixels = pixelsRef.current;
+
+		for (let i = 0; i < pixels.length; i++) {
+			const pixel = pixels[i];
 			// @ts-ignore
 			pixel[fnName]();
 			if (!pixel.isIdle) {
 				allIdle = false;
 			}
 		}
-		if (allIdle) {
-			cancelAnimationFrame(animationRef.current);
-		}
-	};
 
-	const handleAnimation = (name: keyof Pixel) => {
-		if (animationRef.current !== null) {
+		if (allIdle && animationRef.current) {
 			cancelAnimationFrame(animationRef.current);
+			animationRef.current = null;
 		}
-		animationRef.current = requestAnimationFrame(() => doAnimate(name));
-	};
+	}, []);
 
-	const onMouseEnter = () => handleAnimation("appear");
-	const onMouseLeave = () => handleAnimation("disappear");
-	const onFocus: React.FocusEventHandler<HTMLDivElement> = (e) => {
-		if (e.currentTarget.contains(e.relatedTarget)) return;
-		handleAnimation("appear");
-	};
-	const onBlur: React.FocusEventHandler<HTMLDivElement> = (e) => {
-		if (e.currentTarget.contains(e.relatedTarget)) return;
-		handleAnimation("disappear");
-	};
+	const handleAnimation = useCallback(
+		(name: keyof Pixel) => {
+			if (animationRef.current !== null) {
+				cancelAnimationFrame(animationRef.current);
+			}
+			animationRef.current = requestAnimationFrame(() => doAnimate(name));
+		},
+		[doAnimate],
+	);
+
+	const onMouseEnter = useCallback(
+		() => handleAnimation("appear"),
+		[handleAnimation],
+	);
+	const onMouseLeave = useCallback(
+		() => handleAnimation("disappear"),
+		[handleAnimation],
+	);
+
+	const onFocus = useCallback<React.FocusEventHandler<HTMLDivElement>>(
+		(e) => {
+			if (e.currentTarget.contains(e.relatedTarget)) return;
+			handleAnimation("appear");
+		},
+		[handleAnimation],
+	);
+
+	const onBlur = useCallback<React.FocusEventHandler<HTMLDivElement>>(
+		(e) => {
+			if (e.currentTarget.contains(e.relatedTarget)) return;
+			handleAnimation("disappear");
+		},
+		[handleAnimation],
+	);
+
+	// Debounced resize handler to prevent excessive re-initialization
+	const resizeTimeoutRef = useRef<NodeJS.Timeout>();
+	const handleResize = useCallback(() => {
+		if (resizeTimeoutRef.current) {
+			clearTimeout(resizeTimeoutRef.current);
+		}
+		resizeTimeoutRef.current = setTimeout(initPixels, 150);
+	}, [initPixels]);
 
 	useEffect(() => {
 		initPixels();
-		const observer = new ResizeObserver(() => {
-			initPixels();
-		});
+
+		const observer = new ResizeObserver(handleResize);
 		if (containerRef.current) {
 			observer.observe(containerRef.current);
 		}
+
 		return () => {
 			observer.disconnect();
 			if (animationRef.current !== null) {
 				cancelAnimationFrame(animationRef.current);
 			}
+			if (resizeTimeoutRef.current) {
+				clearTimeout(resizeTimeoutRef.current);
+			}
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [finalGap, finalSpeed, finalColors, finalNoFocus]);
+	}, [initPixels, handleResize]);
 
 	return (
 		<div

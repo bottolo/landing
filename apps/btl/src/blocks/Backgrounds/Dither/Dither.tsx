@@ -1,7 +1,3 @@
-/*
-	Installed from https://reactbits.dev/ts/tailwind/
-*/
-
 import {
 	Canvas,
 	type ThreeEvent,
@@ -10,8 +6,7 @@ import {
 } from "@react-three/fiber";
 import { EffectComposer, wrapEffect } from "@react-three/postprocessing";
 import { Effect } from "postprocessing";
-/* eslint-disable react/no-unknown-property */
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 const waveVertexShader = `
@@ -70,7 +65,7 @@ float cnoise(vec2 P) {
   return 2.3 * mix(n_x.x, n_x.y, fade_xy.y);
 }
 
-const int OCTAVES = 8;
+const int OCTAVES = 6; // Reduced from 8 for better performance
 float fbm(vec2 p) {
   float value = 0.0;
   float amp = 1.0;
@@ -165,8 +160,6 @@ class RetroEffectImpl extends Effect {
 	}
 }
 
-import { forwardRef } from "react";
-
 const RetroEffect = forwardRef<
 	RetroEffectImpl,
 	{ colorNum: number; pixelSize: number }
@@ -205,6 +198,24 @@ interface DitheredWavesProps {
 	mouseRadius: number;
 }
 
+function useThrottledCallback<T extends (...args: any[]) => void>(
+	callback: T,
+	delay: number,
+): T {
+	const lastCall = useRef<number>(0);
+
+	return useCallback(
+		(...args: Parameters<T>) => {
+			const now = Date.now();
+			if (now - lastCall.current >= delay) {
+				lastCall.current = now;
+				callback(...args);
+			}
+		},
+		[callback, delay],
+	) as T;
+}
+
 function DitheredWaves({
 	waveSpeed,
 	waveFrequency,
@@ -235,40 +246,84 @@ function DitheredWaves({
 		mouseRadius: new THREE.Uniform(mouseRadius),
 	});
 
+	const prevValues = useRef({
+		waveSpeed,
+		waveFrequency,
+		waveAmplitude,
+		waveColor: [...waveColor] as [number, number, number],
+		enableMouseInteraction,
+		mouseRadius,
+	});
+
 	useEffect(() => {
 		const dpr = gl.getPixelRatio();
 		const newWidth = Math.floor(size.width * dpr);
 		const newHeight = Math.floor(size.height * dpr);
-		const currentRes = waveUniformsRef.current.resolution.value;
-		if (currentRes.x !== newWidth || currentRes.y !== newHeight) {
-			currentRes.set(newWidth, newHeight);
-		}
+		waveUniformsRef.current.resolution.value.set(newWidth, newHeight);
 	}, [size, gl]);
 
+	const throttledSetMousePos = useThrottledCallback(setMousePos, 16); // ~60fps
+
 	useFrame(({ clock }) => {
+		const uniforms = waveUniformsRef.current;
+		const prev = prevValues.current;
+
+		// Only update time if animation is enabled
 		if (!disableAnimation) {
-			waveUniformsRef.current.time.value = clock.getElapsedTime();
+			uniforms.time.value = clock.getElapsedTime();
 		}
-		waveUniformsRef.current.waveSpeed.value = waveSpeed;
-		waveUniformsRef.current.waveFrequency.value = waveFrequency;
-		waveUniformsRef.current.waveAmplitude.value = waveAmplitude;
-		waveUniformsRef.current.waveColor.value.set(...waveColor);
-		waveUniformsRef.current.enableMouseInteraction.value =
-			enableMouseInteraction ? 1 : 0;
-		waveUniformsRef.current.mouseRadius.value = mouseRadius;
+
+		// Only update uniforms if values have changed
+		if (prev.waveSpeed !== waveSpeed) {
+			uniforms.waveSpeed.value = waveSpeed;
+			prev.waveSpeed = waveSpeed;
+		}
+
+		if (prev.waveFrequency !== waveFrequency) {
+			uniforms.waveFrequency.value = waveFrequency;
+			prev.waveFrequency = waveFrequency;
+		}
+
+		if (prev.waveAmplitude !== waveAmplitude) {
+			uniforms.waveAmplitude.value = waveAmplitude;
+			prev.waveAmplitude = waveAmplitude;
+		}
+
+		if (
+			prev.waveColor[0] !== waveColor[0] ||
+			prev.waveColor[1] !== waveColor[1] ||
+			prev.waveColor[2] !== waveColor[2]
+		) {
+			uniforms.waveColor.value.setRGB(...waveColor);
+			prev.waveColor = [...waveColor];
+		}
+
+		if (prev.enableMouseInteraction !== enableMouseInteraction) {
+			uniforms.enableMouseInteraction.value = enableMouseInteraction ? 1 : 0;
+			prev.enableMouseInteraction = enableMouseInteraction;
+		}
+
+		if (prev.mouseRadius !== mouseRadius) {
+			uniforms.mouseRadius.value = mouseRadius;
+			prev.mouseRadius = mouseRadius;
+		}
+
 		if (enableMouseInteraction) {
-			waveUniformsRef.current.mousePos.value.set(mousePos.x, mousePos.y);
+			uniforms.mousePos.value.set(mousePos.x, mousePos.y);
 		}
 	});
 
-	const handlePointerMove = (e: ThreeEvent<PointerEvent>) => {
-		if (!enableMouseInteraction) return;
-		const rect = gl.domElement.getBoundingClientRect();
-		const dpr = gl.getPixelRatio();
-		const x = (e.clientX - rect.left) * dpr;
-		const y = (e.clientY - rect.top) * dpr;
-		setMousePos({ x, y });
-	};
+	const handlePointerMove = useCallback(
+		(e: ThreeEvent<PointerEvent>) => {
+			if (!enableMouseInteraction) return;
+			const rect = gl.domElement.getBoundingClientRect();
+			const dpr = gl.getPixelRatio();
+			const x = (e.clientX - rect.left) * dpr;
+			const y = (e.clientY - rect.top) * dpr;
+			throttledSetMousePos({ x, y });
+		},
+		[enableMouseInteraction, gl, throttledSetMousePos],
+	);
 
 	return (
 		<>
@@ -277,7 +332,7 @@ function DitheredWaves({
 				<shaderMaterial
 					vertexShader={waveVertexShader}
 					fragmentShader={waveFragmentShader}
-					uniforms={waveUniformsRef.current}
+					uniforms={waveUniformsRef.current!}
 				/>
 			</mesh>
 
@@ -325,8 +380,17 @@ export default function Dither({
 		<Canvas
 			className="w-full h-full relative"
 			camera={{ position: [0, 0, 6] }}
-			dpr={window.devicePixelRatio}
-			gl={{ antialias: true, preserveDrawingBuffer: true }}
+			dpr={Math.min(window.devicePixelRatio, 2)}
+			frameloop="always"
+			gl={{
+				antialias: false,
+				preserveDrawingBuffer: false,
+				alpha: false,
+				depth: true,
+				stencil: false,
+				powerPreference: "low-power",
+				failIfMajorPerformanceCaveat: false,
+			}}
 		>
 			<DitheredWaves
 				waveSpeed={waveSpeed}

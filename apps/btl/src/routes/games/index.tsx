@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import PixelCard from "../../blocks/Components/PixelCard/PixelCard.tsx";
+import RollingGallery from "../../blocks/Components/RollingGallery/RollingGallery.tsx";
 
 export const Route = createFileRoute("/games/")({
 	component: RouteComponent,
@@ -7,23 +7,34 @@ export const Route = createFileRoute("/games/")({
 
 function RouteComponent() {
 	const galleryElements = [
-		{ image: "", text: "noclip", link: "/web" },
+		{ image: "", text: "noclip", link: "/games/noclip" },
 		{ image: "", text: "octant", link: "/games" },
 		{ image: "", text: "visio", link: "/about" },
 		{ image: "", text: "apus", link: "/web" },
 	];
 
 	return (
-		<div className={"grid grid-cols-1 md:grid-cols-4 gap-4"}>
-			{galleryElements.map((element) => (
-				<Link href={element?.link} className={"cursor-pointer"}>
-					<PixelCard key={element?.text}>
-						<div className={"absolute"}>
-							<pre>{element?.text}</pre>
+		<div className="w-full p-8">
+			<RollingGallery
+				items={galleryElements}
+				renderItem={(element, index) => (
+					<Link
+						to={element.link}
+						className="cursor-pointer block w-full h-full"
+						key={element.text}
+					>
+						<div
+							className={
+								"flex flex-col items-center justify-center border border-white h-[300px] w-[500px] hover:bg-white/20"
+							}
+						>
+							<pre className="text-white text-center">{element.text}</pre>
 						</div>
-					</PixelCard>
-				</Link>
-			))}
+					</Link>
+				)}
+				autoplay={true}
+				pauseOnHover={false}
+			/>
 		</div>
 	);
 }

@@ -15,27 +15,49 @@ function Index() {
 			text: "games",
 			link: "/games",
 		},
+
 		{
-			text: "about",
+			text: "substack...?",
 			link: "/about",
 		},
 		{
-			text: "substack...?",
+			text: "about",
 			link: "/about",
 		},
 	];
 
 	return (
-		<div className={"grid grid-cols-1 md:grid-cols-4 gap-4"}>
-			{galleryElements.map((element) => (
-				<Link href={element?.link} className={"cursor-pointer"}>
-					<PixelCard key={element?.text}>
-						<div className={"absolute"}>
-							<pre className={"text-white"}>{element?.text}</pre>
+		<div className="flex flex-col gap-4">
+			<div className="flex flex-col md:flex-row gap-4">
+				{galleryElements.slice(0, -1).map((element) => (
+					<Link
+						to={element?.link}
+						className="cursor-pointer"
+						key={element?.text}
+					>
+						<PixelCard className={"border-2 rounded-none"}>
+							<div className="absolute">
+								<pre className="text-white">{element?.text}</pre>
+							</div>
+						</PixelCard>
+					</Link>
+				))}
+			</div>
+
+			{galleryElements.length > 0 && (
+				<Link
+					to={galleryElements[galleryElements.length - 1]?.link}
+					className="cursor-pointer"
+				>
+					<PixelCard className="w-full border-2 rounded-none">
+						<div className="absolute">
+							<pre className="text-white">
+								{galleryElements[galleryElements.length - 1]?.text}
+							</pre>
 						</div>
 					</PixelCard>
 				</Link>
-			))}
+			)}
 		</div>
 	);
 }
