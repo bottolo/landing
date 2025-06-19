@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { cn } from "../../lib/cn.ts";
 
-export const Route = createFileRoute("/games/noclip")({
+export const Route = createFileRoute("/web/cccd")({
 	component: RouteComponent,
 });
 
@@ -13,7 +13,9 @@ function RouteComponent() {
 			<div
 				className={"absolute top-4 flex flex-col items-center z-[5] text-xl"}
 			>
-				<p>bottolo / games / noclip</p>
+				<p>
+					<Link to={"/"}>bottolo </Link>/ <Link to={"/web"}>web</Link> / cccd
+				</p>
 				<p>mute</p>
 				<p onClick={() => setView(view === "text" ? "images" : "text")}>
 					{view}

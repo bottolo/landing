@@ -13,7 +13,7 @@ interface GalleryElement {
 
 function RouteComponent() {
 	const galleryElements: GalleryElement[] = [
-		{ image: "", text: "cccd", link: "/web" },
+		{ image: "", text: "cccd", link: "/web/cccd" },
 		{ image: "", text: "mediation", link: "/games" },
 		{ image: "", text: "pensiero selvaggio", link: "/about" },
 		{ image: "", text: "eridanus", link: "/web" },
@@ -36,7 +36,7 @@ function RouteComponent() {
 								"flex flex-col items-center justify-center border border-white h-[300px] w-[220px] hover:bg-white/20"
 							}
 						>
-							<pre className="text-white text-center">{element.text}</pre>
+							<p className="text-white text-center">{element.text}</p>
 						</div>
 					</Link>
 				)}

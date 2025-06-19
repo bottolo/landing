@@ -4,7 +4,7 @@ import Dither from "../blocks/Backgrounds/Dither/Dither.tsx";
 
 export const Route = createRootRoute({
 	component: () => (
-		<div className={"bg-black relative overflow-y-auto"}>
+		<div className={"bg-black relative overflow-y-auto font-[Spectral]"}>
 			<div
 				className="absolute left-0 h-full w-1/6 md:w-1/4 z-0"
 				style={{

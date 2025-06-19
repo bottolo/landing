@@ -28,7 +28,7 @@ function About() {
 			{Array.from({ length: 300 }, (_, index) => {
 				const position = generateRandomPosition();
 				return (
-					<pre
+					<p
 						key={index}
 						className="absolute text-sm 0 whitespace-nowrap opacity-70 hover:opacity-100 transition-opacity duration-300"
 						style={{
@@ -37,7 +37,7 @@ function About() {
 						}}
 					>
 						{randomPhrases[Math.floor(Math.random() * randomPhrases.length)]}
-					</pre>
+					</p>
 				);
 			})}
 		</div>

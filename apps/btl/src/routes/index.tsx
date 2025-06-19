@@ -37,7 +37,7 @@ function Index() {
 					>
 						<PixelCard className={"border-2 rounded-none"}>
 							<div className="absolute">
-								<pre className="text-white">{element?.text}</pre>
+								<p className="text-white">{element?.text}</p>
 							</div>
 						</PixelCard>
 					</Link>
@@ -51,9 +51,9 @@ function Index() {
 				>
 					<PixelCard className="w-full border-2 rounded-none">
 						<div className="absolute">
-							<pre className="text-white">
+							<p className="text-white">
 								{galleryElements[galleryElements.length - 1]?.text}
-							</pre>
+							</p>
 						</div>
 					</PixelCard>
 				</Link>

@@ -28,7 +28,7 @@ function RouteComponent() {
 								"flex flex-col items-center justify-center border border-white h-[300px] w-[500px] hover:bg-white/20"
 							}
 						>
-							<pre className="text-white text-center">{element.text}</pre>
+							<p className="text-white text-center">{element.text}</p>
 						</div>
 					</Link>
 				)}
