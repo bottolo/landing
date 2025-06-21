@@ -1,27 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, useParams } from "@tanstack/react-router";
 import { useState } from "react";
 import { cn } from "../../lib/cn.ts";
 
-export const Route = createFileRoute("/web/cccd")({
+export const Route = createFileRoute("/games/$choice")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
 	const [view, setView] = useState<"text" | "images">("text");
+	const { choice } = useParams({ from: "/games/$choice" });
+
 	return (
 		<div className={"flex flex-col items-center"}>
-			<div
-				className={"absolute top-4 flex flex-col items-center z-[5] text-xl"}
-			>
-				<p>
-					<Link to={"/"}>bottolo </Link>/ <Link to={"/web"}>web</Link> / cccd
-				</p>
-				<p>mute</p>
-				<p onClick={() => setView(view === "text" ? "images" : "text")}>
-					{view}
-				</p>
-			</div>
-
 			<div
 				className={cn(
 					"absolute flex flex-col items-center gap-24 bottom-8 opacity-20 h-[85vh] w-[300px] md:w-[700px] overflow-hidden scale-80 transition-all duration-800",

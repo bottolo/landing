@@ -1,25 +1,24 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useParams } from "@tanstack/react-router";
+import { useScroll, useSpring } from "framer-motion";
 import { useState } from "react";
 import { cn } from "../../lib/cn.ts";
 
-export const Route = createFileRoute("/games/noclip")({
+export const Route = createFileRoute("/web/$choice")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
 	const [view, setView] = useState<"text" | "images">("text");
+	const { choice } = useParams({ from: "/web/$choice" });
+	const { scrollYProgress } = useScroll();
+	const scaleY = useSpring(scrollYProgress, {
+		stiffness: 100,
+		damping: 30,
+		restDelta: 0.001,
+	});
+
 	return (
 		<div className={"flex flex-col items-center"}>
-			<div
-				className={"absolute top-4 flex flex-col items-center z-[5] text-xl"}
-			>
-				<p>bottolo / games / noclip</p>
-				<p>mute</p>
-				<p onClick={() => setView(view === "text" ? "images" : "text")}>
-					{view}
-				</p>
-			</div>
-
 			<div
 				className={cn(
 					"absolute flex flex-col items-center gap-24 bottom-8 opacity-20 h-[85vh] w-[300px] md:w-[700px] overflow-hidden scale-80 transition-all duration-800",
@@ -38,7 +37,7 @@ function RouteComponent() {
 				className={cn(
 					"absolute flex flex-col items-center w-[250px] md:w-[700px] opacity-20 text-center text-2xl/14 h-[85vh] gap-[10rem] bottom-8 overflow-hidden scale-80 transition-all duration-800",
 					view === "text" &&
-						"overflow-y-auto z-[1] opacity-100 scale-100 bg-black/30",
+						"overflow-y-auto z-[1]  opacity-100 scale-100 bg-black/30",
 				)}
 			>
 				<p>

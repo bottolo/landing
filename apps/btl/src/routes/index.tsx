@@ -27,37 +27,16 @@ function Index() {
 	];
 
 	return (
-		<div className="flex flex-col gap-4">
-			<div className="flex flex-col md:flex-row gap-4">
-				{galleryElements.slice(0, -1).map((element) => (
-					<Link
-						to={element?.link}
-						className="cursor-pointer"
-						key={element?.text}
-					>
-						<PixelCard className={"border-2 rounded-none"}>
-							<div className="absolute">
-								<p className="text-white">{element?.text}</p>
-							</div>
-						</PixelCard>
-					</Link>
-				))}
-			</div>
-
-			{galleryElements.length > 0 && (
-				<Link
-					to={galleryElements[galleryElements.length - 1]?.link}
-					className="cursor-pointer"
-				>
-					<PixelCard className="w-full border-2 rounded-none">
+		<div className=" py-8 w-full overflow-y-auto flex flex-col gap-16 items-center">
+			{galleryElements.map((element) => (
+				<Link to={element?.link} className="cursor-pointer" key={element?.text}>
+					<PixelCard className={"border-2 rounded-none"}>
 						<div className="absolute">
-							<p className="text-white">
-								{galleryElements[galleryElements.length - 1]?.text}
-							</p>
+							<p className="text-white">{element?.text}</p>
 						</div>
 					</PixelCard>
 				</Link>
-			)}
+			))}
 		</div>
 	);
 }
