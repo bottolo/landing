@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
 	return (
-		<div className="absolute max-h-[90vh] md:max-h-[92vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center scrollbar-hide">
+		<div className="absolute max-h-[90vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center scrollbar-hide">
 			{ROOT_ELEMENTS.map((element) => (
 				<DitherCard key={element.title} element={element} />
 			))}

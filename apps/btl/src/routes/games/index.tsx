@@ -19,7 +19,7 @@ const GAMES: DetailsNavigationElement[] = [
 		),
 	},
 	{
-		title: "noclip",
+		title: "octant",
 		link: "/games/octant",
 		icon: (
 			<img
@@ -30,7 +30,7 @@ const GAMES: DetailsNavigationElement[] = [
 		),
 	},
 	{
-		title: "noclip",
+		title: "visio",
 		link: "/games/visio",
 		icon: (
 			<img
@@ -41,7 +41,7 @@ const GAMES: DetailsNavigationElement[] = [
 		),
 	},
 	{
-		title: "noclip",
+		title: "apus",
 		link: "/games/apus",
 		icon: (
 			<img
@@ -55,7 +55,7 @@ const GAMES: DetailsNavigationElement[] = [
 
 function RouteComponent() {
 	return (
-		<div className="absolute max-h-[90vh] md:max-h-[92vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center scrollbar-hide">
+		<div className="absolute max-h-[90vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center scrollbar-hide">
 			{GAMES.map((element) => (
 				<DitherCard key={element.title} element={element} />
 			))}
