@@ -55,7 +55,7 @@ const GAMES: DetailsNavigationElement[] = [
 
 function RouteComponent() {
 	return (
-		<div className="absolute max-h-[90vh] md:max-h-[92vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center">
+		<div className="absolute max-h-[90vh] md:max-h-[92vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center scrollbar-hide">
 			{GAMES.map((element) => (
 				<DitherCard key={element.title} element={element} />
 			))}
