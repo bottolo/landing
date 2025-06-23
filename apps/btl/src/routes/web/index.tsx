@@ -16,7 +16,7 @@ const WEBSITES: DetailsNavigationElement[] = [
 				className={
 					"opacity-30 size-48 md:size-58 object-cover grayscale invert rounded-full"
 				}
-				src={"../../../public/pic.jpg"}
+				src={"/pic.jpg"}
 			/>
 		),
 	},
@@ -27,7 +27,7 @@ const WEBSITES: DetailsNavigationElement[] = [
 			<img
 				alt={"cccd"}
 				className={"opacity-40 size-48 md:size-64"}
-				src={"../../../public/heart.svg"}
+				src={"/heart.svg"}
 			/>
 		),
 	},
