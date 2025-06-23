@@ -57,7 +57,7 @@ export const Route = createRootRoute({
 						waveSpeed={0.01}
 					/>
 				</div>
-				<header className={"absolute top-2 left-1/2 right-1/2 z-[1000] "}>
+				<header className={"absolute top-2 left-1/2 right-1/2 z-[1000]"}>
 					<div className={"flex flex-col items-center justify-center"}>
 						<div className={"flex flex-row items-center justify-center"}>
 							<Link to={"/"}>bottolo</Link>

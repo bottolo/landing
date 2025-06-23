@@ -1,22 +1,43 @@
 import { createFileRoute } from "@tanstack/react-router";
-import GalleryItem from "../components/ui/gallery-item.tsx";
+import { FaReact } from "react-icons/fa6";
+import {
+	SiAboutdotme,
+	SiGodotengine,
+	SiTypescript,
+	SiUnity,
+} from "react-icons/si";
+import DitherCard from "../components/ui/dither-card.tsx";
+import type { RootNavigationElement } from "../types/root-navigation-element.ts";
 
-const GALLERY_ELEMENTS = [
+const ROOT_ELEMENTS: RootNavigationElement[] = [
 	{
-		text: "web",
+		title: "web",
 		link: "/web",
+		icon: (
+			<div className={"flex flex-row gap-8"}>
+				<FaReact className={"fill-black/40 size-24 md:size-36"} />
+				<SiTypescript className={"fill-black/40 size-24 md:size-36"} />
+			</div>
+		),
 	},
 	{
-		text: "games",
+		title: "games",
 		link: "/games",
+		icon: (
+			<div className={"flex flex-row gap-8"}>
+				<SiGodotengine className={"fill-black/40  size-24 md:size-36"} />
+				<SiUnity className={"fill-black/40  size-24 md:size-36"} />
+			</div>
+		),
 	},
 	{
-		text: "substack...?",
+		title: "about",
 		link: "/about",
-	},
-	{
-		text: "about",
-		link: "/about",
+		icon: (
+			<div className={"flex flex-row gap-8 scale-75 md:scale-100"}>
+				<SiAboutdotme className={"fill-stone-500/50"} size={150} />
+			</div>
+		),
 	},
 ];
 
@@ -26,9 +47,9 @@ export const Route = createFileRoute("/")({
 
 function Index() {
 	return (
-		<div className="py-8 w-full overflow-y-auto flex flex-col gap-16 items-center">
-			{GALLERY_ELEMENTS.map((element) => (
-				<GalleryItem key={element.text} element={element} />
+		<div className="absolute max-h-[90vh] md:max-h-[92vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center">
+			{ROOT_ELEMENTS.map((element) => (
+				<DitherCard key={element.title} element={element} />
 			))}
 		</div>
 	);
