@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import DitherCard from "../../components/ui/dither-card.tsx";
 import type { DetailsNavigationElement } from "../../types/details-navigation-element.ts";
 
-export const Route = createFileRoute("/web/")({
+export const Route = createFileRoute("/apps/")({
 	component: RouteComponent,
 });
 
-const WEBSITES: DetailsNavigationElement[] = [
+const APPS: DetailsNavigationElement[] = [
 	{
 		title: "landing",
-		link: "/web/landing",
+		link: "/apps/landing",
 		icon: (
 			<img
 				alt={"landing"}
@@ -22,7 +22,7 @@ const WEBSITES: DetailsNavigationElement[] = [
 	},
 	{
 		title: "cccd",
-		link: "/web/cccd",
+		link: "/apps/cccd",
 		icon: (
 			<img
 				alt={"cccd"}
@@ -33,7 +33,7 @@ const WEBSITES: DetailsNavigationElement[] = [
 	},
 	{
 		title: "mediation",
-		link: "/web/mediation",
+		link: "/apps/mediation",
 		icon: (
 			<img
 				alt={"mediation"}
@@ -42,13 +42,13 @@ const WEBSITES: DetailsNavigationElement[] = [
 			/>
 		),
 	},
-	{ title: "pensiero selvaggio", link: "/web/wild", disabled: true },
+	{ title: "pensiero selvaggio", link: "/apps/wild", disabled: true },
 ];
 
 function RouteComponent() {
 	return (
 		<div className="absolute max-h-[90vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center scrollbar-hide">
-			{WEBSITES.map((element) => (
+			{APPS.map((element) => (
 				<DitherCard key={element.title} element={element} />
 			))}
 		</div>

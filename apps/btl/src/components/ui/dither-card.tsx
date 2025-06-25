@@ -120,7 +120,7 @@ const DitherCard = React.memo(
 				)}
 			>
 				<motion.div
-					className="relative flex flex-col items-center justify-center border-2 border-stone-700 rounded-none overflow-hidden h-[450px] w-[300px] md:w-[400px]"
+					className="relative flex flex-col items-center justify-center border-2 border-stone-700 rounded-none overflow-hidden h-[450px] md:h-[550px] w-[300px] md:w-[400px]"
 					onMouseEnter={() => setIsHovered(true)}
 					onMouseLeave={() => setIsHovered(false)}
 					onTouchStart={handleTouchStart}

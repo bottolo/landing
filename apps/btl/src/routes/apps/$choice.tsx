@@ -1,20 +1,20 @@
 import { createFileRoute, useParams } from "@tanstack/react-router";
-import { useState } from "react";
-import { WEB_CONTENT_DATA } from "../../data/web-content-data.tsx";
+import { APPS_CONTENT_DATA } from "../../data/web-content-data.tsx";
 import { cn } from "../../lib/cn.ts";
 import { getImagesByTitle } from "../../lib/get-images-by-title.ts";
 import { getParagraphsByTitle } from "../../lib/get-paragraphs-by-title.ts";
+import { useOptionsStore } from "../../store/useOptionsStore.ts";
 
-export const Route = createFileRoute("/web/$choice")({
+export const Route = createFileRoute("/apps/$choice")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
-	const [view, setView] = useState<"text" | "images">("text");
-	const { choice } = useParams({ from: "/web/$choice" });
+	const { view } = useOptionsStore();
+	const { choice } = useParams({ from: "/apps/$choice" });
 
-	const paragraphs = getParagraphsByTitle(choice, WEB_CONTENT_DATA);
-	const images = getImagesByTitle(choice, WEB_CONTENT_DATA);
+	const paragraphs = getParagraphsByTitle(choice, APPS_CONTENT_DATA);
+	const images = getImagesByTitle(choice, APPS_CONTENT_DATA);
 
 	const displayParagraphs =
 		paragraphs.length > 0
@@ -30,7 +30,7 @@ function RouteComponent() {
 		<div className={"flex flex-col items-center"}>
 			<div
 				className={cn(
-					"absolute flex flex-col items-center gap-24 bottom-8 opacity-20 max-h-[90vh] w-[300px] md:w-[700px] overflow-hidden scale-80 transition-all duration-800",
+					"absolute flex flex-col items-center gap-24 bottom-8 opacity-20 max-h-[85vh] md:max-h-[87vh] w-[300px] md:w-[700px] overflow-hidden scale-80 transition-all duration-800",
 					view === "images" &&
 						"overflow-y-auto scrollbar-hide z-[1] opacity-100 scale-100",
 				)}
@@ -38,7 +38,7 @@ function RouteComponent() {
 				{displayImages.map((imageSrc, index) => (
 					<img
 						key={index}
-						className={"w-[700px] rounded-lg shadow-lg"}
+						className={"w-[700px] shadow-lg"}
 						src={imageSrc}
 						alt={`${choice} ${index + 1}`}
 						onError={(e) => {
@@ -50,7 +50,7 @@ function RouteComponent() {
 
 			<div
 				className={cn(
-					"absolute flex flex-col items-center w-[250px] md:w-[700px] opacity-20 text-center text-2xl/14 max-h-[90vh] gap-[10rem] bottom-8 overflow-hidden scale-80 transition-all duration-800",
+					"absolute flex flex-col items-center w-[250px] md:w-[700px] opacity-20 text-center text-2xl/14 max-h-[85vh] md:max-h-[87vh] gap-[10rem] bottom-8 overflow-hidden scale-80 transition-all duration-800",
 					view === "text" &&
 						"overflow-y-auto scrollbar-hide z-[1] opacity-100 scale-100 bg-black/30",
 				)}

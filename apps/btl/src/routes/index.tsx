@@ -11,8 +11,8 @@ import type { RootNavigationElement } from "../types/root-navigation-element.ts"
 
 const ROOT_ELEMENTS: RootNavigationElement[] = [
 	{
-		title: "web",
-		link: "/web",
+		title: "apps",
+		link: "/apps",
 		icon: (
 			<div className={"flex flex-row gap-8"}>
 				<FaReact className={"fill-black/40 size-24 md:size-36"} />

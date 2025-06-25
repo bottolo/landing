@@ -7,9 +7,11 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { motion } from "motion/react";
 import Dither from "../blocks/Backgrounds/Dither/Dither.tsx";
+import { useOptionsStore } from "../store/useOptionsStore.ts";
 
 export const Route = createRootRoute({
 	component: () => {
+		const { view, setView } = useOptionsStore();
 		const location = useLocation();
 		return (
 			<motion.div
@@ -77,6 +79,12 @@ export const Route = createRootRoute({
 								})}
 						</div>
 						mute
+						<p
+							className="cursor-pointer"
+							onClick={() => setView(view === "text" ? "images" : "text")}
+						>
+							{view === "text" ? "images" : "text"}
+						</p>
 					</div>
 				</header>
 				<main

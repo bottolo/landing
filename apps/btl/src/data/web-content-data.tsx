@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export const WEB_CONTENT_DATA: {
+export const APPS_CONTENT_DATA: {
 	[key: string]: {
 		paragraphs: ReactNode[];
 		images: string[];
