@@ -1,9 +1,9 @@
 import { createFileRoute, useParams } from "@tanstack/react-router";
 import { useState } from "react";
+import { WEB_CONTENT_DATA } from "../../data/web-content-data.tsx";
 import { cn } from "../../lib/cn.ts";
 import { getImagesByTitle } from "../../lib/get-images-by-title.ts";
 import { getParagraphsByTitle } from "../../lib/get-paragraphs-by-title.ts";
-import { WEB_CONTENT_DATA } from "../../lib/web-content-data.tsx";
 
 export const Route = createFileRoute("/web/$choice")({
 	component: RouteComponent,
