@@ -102,12 +102,10 @@ export const APPS_CONTENT_DATA: {
 			</p>,
 		],
 		images: [
-			"/img_1.png",
-			"/img_2.png",
-			"/img_3.png",
-			"/img_4.png",
-			"/img_5.png",
-			"/img_6.png",
+			"/apps/cccd/cccd_0.png",
+			"/apps/cccd/cccd_1.png",
+			"/apps/cccd/cccd_2.png",
+			"/apps/cccd/cccd_3.png",
 		],
 	},
 	mediation: {
@@ -136,12 +134,9 @@ export const APPS_CONTENT_DATA: {
 			</p>,
 		],
 		images: [
-			"/img_1.png",
-			"/img_2.png",
-			"/img_3.png",
-			"/img_4.png",
-			"/img_5.png",
-			"/img_6.png",
+			"/apps/mediations/mdz_0.png",
+			"/apps/mediations/mdz_1.png",
+			"/apps/mediations/mdz_2.png",
 		],
 	},
 };
