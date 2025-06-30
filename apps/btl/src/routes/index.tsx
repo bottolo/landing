@@ -1,45 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FaReact } from "react-icons/fa6";
-import {
-	SiAboutdotme,
-	SiGodotengine,
-	SiTypescript,
-	SiUnity,
-} from "react-icons/si";
 import DitherCard from "../components/ui/dither-card.tsx";
-import type { RootNavigationElement } from "../types/root-navigation-element.ts";
-
-const ROOT_ELEMENTS: RootNavigationElement[] = [
-	{
-		title: "apps",
-		link: "/apps",
-		icon: (
-			<div className={"flex flex-row gap-8"}>
-				<FaReact className={"fill-black/40 size-24 md:size-36"} />
-				<SiTypescript className={"fill-black/40 size-24 md:size-36"} />
-			</div>
-		),
-	},
-	{
-		title: "games",
-		link: "/games",
-		icon: (
-			<div className={"flex flex-row gap-8"}>
-				<SiGodotengine className={"fill-black/40  size-24 md:size-36"} />
-				<SiUnity className={"fill-black/40  size-24 md:size-36"} />
-			</div>
-		),
-	},
-	{
-		title: "about",
-		link: "/about",
-		icon: (
-			<div className={"flex flex-row gap-8 scale-75 md:scale-100"}>
-				<SiAboutdotme className={"fill-stone-500/50"} size={150} />
-			</div>
-		),
-	},
-];
+import { ROOT_ELEMENTS } from "../data/home.tsx";
 
 export const Route = createFileRoute("/")({
 	component: Index,

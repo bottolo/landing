@@ -16,7 +16,7 @@ export const Route = createRootRoute({
 		return (
 			<motion.div
 				className={
-					"bg-black relative overflow-y-auto font-[Spectral] scroll-smooth"
+					"bg-black relative overflow-y-auto font-[Libertinus Mono] scroll-smooth"
 				}
 			>
 				<div
@@ -79,12 +79,6 @@ export const Route = createRootRoute({
 								})}
 						</div>
 						mute
-						<p
-							className="cursor-pointer"
-							onClick={() => setView(view === "text" ? "images" : "text")}
-						>
-							{view === "text" ? "images" : "text"}
-						</p>
 					</div>
 				</header>
 				<main

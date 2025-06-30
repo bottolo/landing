@@ -1,16 +1,13 @@
-import type { ReactNode } from "react";
+import { MdWeb } from "react-icons/md";
+import type { Content } from "../types/content.ts";
 
-export const APPS_CONTENT_DATA: {
-	[key: string]: {
-		title: string;
-		link: string;
-		paragraphs: ReactNode[];
-		images: string[];
-	};
+export const APPS: {
+	[key: string]: Content;
 } = {
 	landing: {
 		title: "landing",
 		link: "/apps/landing",
+		logo: <MdWeb className={"fill-white size-48 md:size-64"} />,
 		paragraphs: [
 			<p>
 				my personal landing page: a project which showcases how i approach web
@@ -64,6 +61,13 @@ export const APPS_CONTENT_DATA: {
 	cccd: {
 		title: "cccd",
 		link: "/apps/cccd",
+		logo: (
+			<img
+				alt={"cccd"}
+				className={"opacity-40 size-48 md:size-64"}
+				src={"/heart.svg"}
+			/>
+		),
 		paragraphs: [
 			<p>
 				a project that i've worked on in the first half of 2025: it's built on
@@ -97,7 +101,7 @@ export const APPS_CONTENT_DATA: {
 			</p>,
 			<p>
 				climate change, sustainability and regenerative design are huge and
-				extremely complex topics, that’s why the results we show in the website
+				extremely complex topics, that's why the results we show in the website
 				cannot be exhaustive"
 			</p>,
 		],
@@ -111,6 +115,13 @@ export const APPS_CONTENT_DATA: {
 	mediation: {
 		title: "mediation",
 		link: "/apps/mediation",
+		logo: (
+			<img
+				alt={"mediation"}
+				className={"fill-white«„ size-48 md:size-64"}
+				src={"/mc.svg"}
+			/>
+		),
 		paragraphs: [
 			<p>
 				funny that i've decided to include this website in my own, but it's

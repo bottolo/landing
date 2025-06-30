@@ -1,17 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { SiGodotengine, SiUnity } from "react-icons/si";
+import type { Content } from "../types/content";
 
-export const GAMES_CONTENT_DATA: {
-	[key: string]: {
-		title?: string;
-		link?: string;
-		paragraphs: ReactNode[];
-		images: string[];
-	};
+export const GAMES: {
+	[key: string]: Content;
 } = {
 	noclip: {
 		title: "noclip",
 		link: "/games/noclip",
+		logo: <SiUnity className={"fill-white size-48 md:size-64"} />,
+
 		paragraphs: [
 			<p>
 				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
@@ -68,6 +66,7 @@ export const GAMES_CONTENT_DATA: {
 	octant: {
 		title: "octant",
 		link: "/games/octant",
+		logo: <SiGodotengine className={"fill-white size-48 md:size-64"} />,
 		paragraphs: [
 			<p>
 				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
@@ -128,6 +127,7 @@ export const GAMES_CONTENT_DATA: {
 	phony: {
 		title: "phony",
 		link: "/games/phony",
+		logo: <SiGodotengine className={"fill-white size-48 md:size-64"} />,
 		paragraphs: [
 			<p>
 				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
@@ -180,6 +180,9 @@ export const GAMES_CONTENT_DATA: {
 		],
 	},
 	visio: {
+		title: "visio",
+		link: "/games/visio",
+		logo: <SiGodotengine className={"fill-white size-48 md:size-64"} />,
 		paragraphs: [
 			<p>
 				visio is a project that i've made for the virtual reality course at the
@@ -227,12 +230,12 @@ export const GAMES_CONTENT_DATA: {
 			</p>,
 		],
 		images: [
-			"/games/visio/vis_0.png",
-			"/games/visio/vis_1.png",
-			"/games/visio/vis_2.png",
-			"/games/visio/vis_3.png",
-			"/games/visio/vis_4.png",
-			"/games/visio/vis_5.png",
+			"/games/visio/vis_0.jpg",
+			"/games/visio/vis_1.jpg",
+			"/games/visio/vis_2.jpg",
+			"/games/visio/vis_3.jpg",
+			"/games/visio/vis_4.jpg",
+			"/games/visio/vis_5.jpg",
 		],
 	},
 };

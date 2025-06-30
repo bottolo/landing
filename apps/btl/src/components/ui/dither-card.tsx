@@ -4,7 +4,7 @@ import React, { Suspense, useState } from "react";
 import Dither from "../../blocks/Backgrounds/Dither/Dither.tsx";
 import { useIsMobile } from "../../hooks/useIsMobile.ts";
 import { cn } from "../../lib/cn.ts";
-import type { RootNavigationElement } from "../../types/root-navigation-element.ts";
+import type { Content } from "../../types/content.ts";
 
 interface DitherBackgroundProps {
 	isHovered: boolean;
@@ -50,7 +50,7 @@ const MobileBackground = React.memo(
 			}}
 		>
 			<motion.img
-				src={"/img_7.png"}
+				src={"/static_bg.png"}
 				alt="Background"
 				className="w-full h-full object-cover"
 				initial={{
@@ -67,7 +67,6 @@ const MobileBackground = React.memo(
 				}}
 			/>
 
-			{/* Additional overlay for tap feedback */}
 			<motion.div
 				className="absolute inset-0 bg-white/10"
 				initial={{ opacity: 0 }}
@@ -87,103 +86,66 @@ const DitherFallback = () => <div className="absolute inset-0 bg-stone-800" />;
 
 const NoImageFallback = () => <div className="absolute inset-0 bg-stone-900" />;
 
-const DitherCard = React.memo(
-	({ element }: { element: RootNavigationElement }) => {
-		const [isHovered, setIsHovered] = useState(false);
-		const [isTapped, setIsTapped] = useState(false);
-		const isMobile = useIsMobile();
+const DitherCard = React.memo(({ element }: { element: Content }) => {
+	const [isHovered, setIsHovered] = useState(false);
+	const [isTapped, setIsTapped] = useState(false);
+	const isMobile = useIsMobile();
 
-		const handleTouchStart = () => {
-			if (isMobile) {
-				setIsTapped(true);
-			}
-		};
+	const handleTouchStart = () => {
+		if (isMobile) {
+			setIsTapped(true);
+		}
+	};
 
-		const handleTouchEnd = () => {
-			if (isMobile) {
-				setIsTapped(false);
-			}
-		};
+	const handleTouchEnd = () => {
+		if (isMobile) {
+			setIsTapped(false);
+		}
+	};
 
-		const handleTouchCancel = () => {
-			if (isMobile) {
-				setIsTapped(false);
-			}
-		};
+	const handleTouchCancel = () => {
+		if (isMobile) {
+			setIsTapped(false);
+		}
+	};
 
-		return (
-			<Link
-				disabled={element?.disabled}
-				to={element.link}
-				className={cn(
-					element.disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
-				)}
+	return (
+		<Link to={element.link || "#"} className="cursor-pointer">
+			{" "}
+			<div className={cn("flex flex-row ", isHovered && "")}>
+				<p>/{element.title}</p>
+			</div>
+			<motion.div
+				className="relative flex flex-col items-center justify-center border-2 border-stone-700 rounded-none overflow-hidden h-[450px] md:h-[550px] w-[300px] md:w-[400px]"
+				onMouseEnter={() => setIsHovered(true)}
+				onMouseLeave={() => setIsHovered(false)}
+				onTouchStart={handleTouchStart}
+				onTouchEnd={handleTouchEnd}
+				onTouchCancel={handleTouchCancel}
 			>
+				{!isMobile ? (
+					<Suspense fallback={<DitherFallback />}>
+						<DitherBackground isHovered={isHovered} />
+					</Suspense>
+				) : (
+					<Suspense fallback={<NoImageFallback />}>
+						<MobileBackground isHovered={isHovered} isTapped={isTapped} />
+					</Suspense>
+				)}
+
 				<motion.div
-					className="relative flex flex-col items-center justify-center border-2 border-stone-700 rounded-none overflow-hidden h-[450px] md:h-[550px] w-[300px] md:w-[400px]"
-					onMouseEnter={() => setIsHovered(true)}
-					onMouseLeave={() => setIsHovered(false)}
-					onTouchStart={handleTouchStart}
-					onTouchEnd={handleTouchEnd}
-					onTouchCancel={handleTouchCancel}
-				>
-					{!isMobile ? (
-						<Suspense fallback={<DitherFallback />}>
-							<DitherBackground isHovered={isHovered} />
-						</Suspense>
-					) : (
-						<Suspense fallback={<NoImageFallback />}>
-							<MobileBackground isHovered={isHovered} isTapped={isTapped} />
-						</Suspense>
+					className={cn(
+						"transition-opacity ease-in-out duration-500 absolute inset-0 flex items-center justify-center z-10 opacity-10",
+						isHovered && "opacity-30",
 					)}
-
-					<motion.div className="absolute inset-0 flex items-center justify-center z-10">
-						{element.icon}
-					</motion.div>
-
-					<motion.div
-						className={cn(
-							"hidden md:block absolute bottom-0 left-0 right-0 p-1 bg-black/20 text-white text-center",
-							isHovered
-								? "opacity-100"
-								: "opacity-0 transition-opacity duration-1000",
-						)}
-					>
-						<h2 className="text-lg font-bold">{element.title}</h2>
-					</motion.div>
-
-					<motion.div
-						className={cn(
-							"md:hidden absolute bottom-0 left-0 right-0 p-1 text-center transition-colors ease-in-out duration-300",
-							isTapped ? "text-white" : "text-white/60",
-						)}
-						animate={{
-							// y: isTapped ? -0.5 : 0,
-							opacity: isTapped ? 1 : 0.9,
-						}}
-						transition={{
-							duration: isTapped ? 0.1 : 0.5,
-							ease: "easeInOut",
-						}}
-					>
-						<motion.div
-							className="absolute inset-0 bg-black/20"
-							animate={{
-								opacity: isTapped ? 0.6 : 0.3,
-							}}
-							transition={{
-								duration: isTapped ? 0.1 : 0.2,
-								ease: "easeInOut",
-							}}
-						/>
-						<h2 className="text-lg font-bold relative z-10">{element.title}</h2>
-					</motion.div>
+				>
+					{element.logo}
 				</motion.div>
-			</Link>
-		);
-	},
-);
+			</motion.div>
+		</Link>
+	);
+});
 
-DitherCard.displayName = "GalleryItem";
+DitherCard.displayName = "DitherCard";
 
 export default DitherCard;
