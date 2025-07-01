@@ -33,7 +33,7 @@ export const Route = createRootRoute({
 				}
 			>
 				<div
-					className="fixed w-56 h-56 pointer-events-none z-[1]"
+					className="hidden md:block fixed w-56 h-56 pointer-events-none z-[1]"
 					style={{
 						left: mousePosition.x - 105,
 						top: mousePosition.y - 100,
@@ -44,7 +44,7 @@ export const Route = createRootRoute({
 					}}
 				/>
 				<img
-					className="fixed pointer-events-none z-[10000]"
+					className="hidden md:block fixed pointer-events-none z-[10000]"
 					src={"/init_cursor.svg"}
 					style={{
 						left: mousePosition.x,
