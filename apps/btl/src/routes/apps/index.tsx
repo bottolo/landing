@@ -8,7 +8,7 @@ export const Route = createFileRoute("/apps/")({
 
 function RouteComponent() {
 	return (
-		<div className="absolute max-h-[87vh] md:max-h-[89vh] bottom-2 w-full overflow-y-auto flex flex-col gap-16 items-center scrollbar-hide">
+		<div className="absolute max-h-[87vh] md:max-h-[89vh] bottom-16 w-full overflow-y-auto flex flex-col gap-16 items-center scrollbar-hide">
 			{Object.values(APPS).map((app) => (
 				<DitherCard key={app.title} element={app} />
 			))}

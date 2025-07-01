@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import React, { Suspense, useState } from "react";
+import Magnet from "../../blocks/Animations/Magnet/Magnet.tsx";
 import Dither from "../../blocks/Backgrounds/Dither/Dither.tsx";
 import { useIsMobile } from "../../hooks/useIsMobile.ts";
 import { cn } from "../../lib/cn.ts";
@@ -110,13 +111,12 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 	};
 
 	return (
-		<Link to={element.link || "#"} className="cursor-pointer">
-			{" "}
-			<div className={cn("flex flex-row ", isHovered && "")}>
-				<p>/{element.title}</p>
+		<Link to={element.link || "#"}>
+			<div className={cn("flex flex-row ")}>
+				<p className={"text-md md:text-2xl"}>/{element.title}</p>
 			</div>
 			<motion.div
-				className="relative flex flex-col items-center justify-center border-2 border-stone-700 rounded-none overflow-hidden h-[450px] md:h-[550px] w-[300px] md:w-[400px]"
+				className="relative flex flex-col items-center justify-center border-2 border-stone-700 rounded-none overflow-hidden h-[30vh] md:h-[35vh] w-[80vw] md:w-[45vw]"
 				onMouseEnter={() => setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
 				onTouchStart={handleTouchStart}
@@ -135,11 +135,13 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 
 				<motion.div
 					className={cn(
-						"transition-opacity ease-in-out duration-500 absolute inset-0 flex items-center justify-center z-10 opacity-10",
+						"transition-opacity ease-in-out duration-500 absolute inset-0 flex items-center justify-center z-10 opacity-10 scale-75 md:scale-100",
 						isHovered && "opacity-30",
 					)}
 				>
-					{element.logo}
+					<Magnet padding={150} disabled={false} magnetStrength={25}>
+						{element.logo}
+					</Magnet>
 				</motion.div>
 			</motion.div>
 		</Link>

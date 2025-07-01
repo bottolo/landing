@@ -9,7 +9,6 @@ export const GAMES: {
 		title: "noclip",
 		link: "/games/noclip",
 		logo: <SiUnity className={"fill-white size-48 md:size-64"} />,
-
 		paragraphs: [
 			<p>
 				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua

@@ -16,7 +16,7 @@ export const Route = createRootRoute({
 		return (
 			<motion.div
 				className={
-					"bg-black relative overflow-y-auto font-[Libertinus Mono] scroll-smooth"
+					"bg-black relative overflow-y-auto font-[Libertinus Mono] scroll-smooth flex flex-col items-center justify-center"
 				}
 			>
 				<div
@@ -32,7 +32,7 @@ export const Route = createRootRoute({
 						waveColor={[1, 1, 1]}
 						disableAnimation={false}
 						enableMouseInteraction={false}
-						mouseRadius={0.1}
+						mouseRadius={0.3}
 						colorNum={2.5}
 						waveAmplitude={0.1}
 						waveFrequency={2}
@@ -78,7 +78,6 @@ export const Route = createRootRoute({
 									);
 								})}
 						</div>
-						mute
 					</div>
 				</header>
 				<main
@@ -88,6 +87,11 @@ export const Route = createRootRoute({
 				>
 					<Outlet />
 				</main>
+				<footer
+					className={"absolute bottom-2 left-1/2 -translate-x-1/2 text-white"}
+				>
+					mute
+				</footer>
 				<TanStackRouterDevtools />
 			</motion.div>
 		);
