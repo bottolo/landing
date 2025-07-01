@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import React, { Suspense, useState } from "react";
 import Magnet from "../../blocks/Animations/Magnet/Magnet.tsx";
@@ -91,6 +91,7 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isTapped, setIsTapped] = useState(false);
 	const isMobile = useIsMobile();
+	const navigate = useNavigate();
 
 	const handleTouchStart = () => {
 		if (isMobile) {
@@ -111,9 +112,16 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 	};
 
 	return (
-		<Link to={element.link || "#"}>
+		<div>
 			<div className={cn("flex flex-row ")}>
-				<p className={"text-md md:text-2xl"}>/{element.title}</p>
+				<p
+					className={cn(
+						"text-md md:text-2xl transition-opacity ease-in-out duration-500",
+						isHovered ? "opacity-100" : "opacity-50",
+					)}
+				>
+					/{element.title}
+				</p>
 			</div>
 			<motion.div
 				className="relative flex flex-col items-center justify-center border-2 border-stone-700 rounded-none overflow-hidden h-[30vh] md:h-[35vh] w-[80vw] md:w-[45vw]"
@@ -122,6 +130,7 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 				onTouchStart={handleTouchStart}
 				onTouchEnd={handleTouchEnd}
 				onTouchCancel={handleTouchCancel}
+				onClick={() => navigate({ to: element.link })}
 			>
 				{!isMobile ? (
 					<Suspense fallback={<DitherFallback />}>
@@ -144,7 +153,7 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 					</Magnet>
 				</motion.div>
 			</motion.div>
-		</Link>
+		</div>
 	);
 });
 

@@ -34,7 +34,7 @@ function RouteComponent() {
 		<div className={"flex flex-col items-center"}>
 			<div
 				className={cn(
-					"absolute flex flex-col items-center gap-[15vh] md:gap-[30vh] bottom-8 opacity-20 max-h-[85vh] md:max-h-[87vh] w-[80vw] overflow-hidden scale-80 transition-all duration-800 cursor-pointer group",
+					"absolute flex flex-col items-center gap-[15vh] md:gap-[30vh] bottom-12 opacity-20 max-h-[86vh] md:max-h-[90vh] w-[80vw] overflow-hidden scale-80 transition-all duration-800 cursor-pointer group",
 					view === "images" &&
 						"overflow-y-auto scrollbar-hide z-[1] opacity-100 scale-100",
 				)}
@@ -59,7 +59,7 @@ function RouteComponent() {
 
 			<div
 				className={cn(
-					"absolute flex flex-col items-center w-[35vw] min-w-[225px] md:min-w-[400px] opacity-20 text-center text-sm md:text-2xl/14 max-h-[85vh] md:max-h-[87vh] gap-[10rem] bottom-8 overflow-hidden scale-80 transition-all duration-800 cursor-pointer group",
+					"absolute flex flex-col items-center w-[35vw] min-w-[225px] md:min-w-[400px] opacity-20 text-center text-sm md:text-2xl/14 max-h-[86vh] md:max-h-[90vh] gap-[10rem] bottom-12 overflow-hidden scale-80 transition-all duration-800 cursor-pointer group",
 					view === "text" &&
 						"overflow-y-auto scrollbar-hide z-[1] opacity-100 scale-100 ",
 				)}

@@ -35,15 +35,22 @@ export const Route = createRootRoute({
 				<div
 					className="fixed w-56 h-56 pointer-events-none z-[1]"
 					style={{
-						left: mousePosition.x - 96,
-						top: mousePosition.y - 96,
+						left: mousePosition.x - 105,
+						top: mousePosition.y - 100,
 						background:
-							"radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 100%)",
+							"radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, transparent 100%)",
 						borderRadius: "50%",
-						filter: "blur(32px)",
+						filter: "blur(64px)",
 					}}
 				/>
-
+				<img
+					className="fixed pointer-events-none z-[10000]"
+					src={"/init_cursor.svg"}
+					style={{
+						left: mousePosition.x,
+						top: mousePosition.y,
+					}}
+				/>
 				<div
 					className="absolute left-0 h-full w-1/6 md:w-1/4 z-0"
 					style={{
@@ -76,7 +83,7 @@ export const Route = createRootRoute({
 					<Dither
 						waveColor={[1, 1, 1]}
 						disableAnimation={false}
-						enableMouseInteraction={true}
+						enableMouseInteraction={false}
 						mouseRadius={0.1}
 						colorNum={2.5}
 						waveAmplitude={0.1}
@@ -84,9 +91,13 @@ export const Route = createRootRoute({
 						waveSpeed={0.01}
 					/>
 				</div>
-				<header className={"absolute top-2 left-1/2 right-1/2 z-[1000]"}>
-					<div className={"flex flex-col items-center justify-center"}>
-						<div className={"flex flex-row gap-2 items-center justify-center"}>
+				<main
+					className={
+						"relative h-screen w-screen flex flex-col items-center justify-center z-[100]"
+					}
+				>
+					<div className={"absolute top-2 left-1/2 right-1/2 z-[1]"}>
+						<div className={"flex flex-row items-center justify-center"}>
 							<Link to={"/"}>bottolo</Link>
 							{location.pathname
 								.split("/")
@@ -102,19 +113,13 @@ export const Route = createRootRoute({
 								})}
 						</div>
 					</div>
-				</header>
-				<main
-					className={
-						"relative h-screen w-screen flex flex-col items-center justify-center z-[100]"
-					}
-				>
 					<Outlet />
+					<footer
+						className={"absolute bottom-2 left-1/2 -translate-x-1/2 text-white"}
+					>
+						mute
+					</footer>
 				</main>
-				<footer
-					className={"absolute bottom-2 left-1/2 -translate-x-1/2 text-white"}
-				>
-					mute
-				</footer>
 				<TanStackRouterDevtools />
 			</motion.div>
 		);

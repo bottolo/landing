@@ -2,26 +2,7 @@
 @import "tailwind-scrollbar-hide/v4";
 
 * {
-	cursor: url("/init_cursor.svg"), auto !important;
-}
-
-a,
-button,
-input,
-textarea,
-select,
-[role="button"],
-[onclick],
-.clickable {
-	cursor: url("/init_cursor.svg"), pointer !important;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-textarea {
-	cursor: url("/init_cursor.svg"), text !important;
+	cursor: none;
 }
 
 :root {

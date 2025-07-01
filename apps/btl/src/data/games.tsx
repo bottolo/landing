@@ -11,55 +11,43 @@ export const GAMES: {
 		logo: <SiUnity className={"fill-white size-48 md:size-64"} />,
 		paragraphs: [
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum.
+				this is a project that i've made in collaboration with the politecnico
+				di milano as a part of my videogames curriculum at the university of
+				milan
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing.
+				it's made in <a href={"https://unity.com/"}>unity</a> and it is the
+				first game that i have ever developed, contributing to ui/ux aspects as
+				well as the game design. check out its
+				<a href={"https://polimi-game-collective.itch.io/noclip"}> itch.io</a>{" "}
+				page! below a brief description taken from the aforementioned link:
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing. Ex in eu magna magna
-				sunt occaecat amet deserunt ullamco laborum aliqua ea deserunt esse
-				anim. Ex sit do ex incididunt fugiat et. Eu excepteur ex eu enim commodo
-				Lorem veniam deserunt fugiat dolore officia amet enim sunt laborum.
-				Pariatur consectetur anim qui magna quis voluptate laborum quis ea minim
-				commodo aliquip tempor et. Aliquip officia cillum elit qui ipsum aute
-				consequat labore culpa incididunt qui voluptate nisi. Dolore ex anim
-				consectetur est occaecat duis adipisicing.
+				"noclip is an experimental first-person game in which you break its
+				boundaries to discover a secret reality
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing.
+				you've found yourself on a mysterious planet. you're able to feel it:
+				your surroundings do not feel quite right. you are not real. yet,
+				discovering that you belong to a digital world gave you the power to
+				transcend reality and see what lies beyond the simulation, letting you
+				spot invisible and intangible objects hidden around the map
+			</p>,
+			<p>
+				you'll have to solve platforming puzzles by noclipping through the map,
+				memorizing the path to your goal. however, your real body isn't as free:
+				you'll need to be quick and accurate with your movements! during
+				platforming you'll only have a limited time, which can be recharged
+				through various checkpoints"
 			</p>,
 		],
 		images: [
-			"/games/noclip/ncp_0.png",
-			"/games/noclip/ncp_1.png",
-			"/games/noclip/ncp_2.png",
-			"/games/noclip/ncp_3.png",
-			"/games/noclip/ncp_4.png",
-			"/games/noclip/ncp_5.png",
-			"/games/noclip/ncp_6.png",
-			"/games/noclip/ncp_7.png",
+			"/games/noclip/ncp_0.jpg",
+			"/games/noclip/ncp_1.jpg",
+			"/games/noclip/ncp_2.jpg",
+			"/games/noclip/ncp_3.jpg",
+			"/games/noclip/ncp_4.jpg",
+			"/games/noclip/ncp_5.jpg",
 		],
 	},
 	octant: {
