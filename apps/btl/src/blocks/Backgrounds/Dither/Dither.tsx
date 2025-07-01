@@ -313,16 +313,19 @@ function DitheredWaves({
 		}
 	});
 
+	// FIXED: Proper coordinate transformation
 	const handlePointerMove = useCallback(
 		(e: ThreeEvent<PointerEvent>) => {
 			if (!enableMouseInteraction) return;
-			const rect = gl.domElement.getBoundingClientRect();
+
+			// Use Three.js normalized coordinates and convert to pixel space
 			const dpr = gl.getPixelRatio();
-			const x = (e.clientX - rect.left) * dpr;
-			const y = (e.clientY - rect.top) * dpr;
-			throttledSetMousePos({ x, y });
+			const pixelX = e.uv!.x * size.width * dpr;
+			const pixelY = (1.0 - e.uv!.y) * size.height * dpr; // Flip Y coordinate
+
+			throttledSetMousePos({ x: pixelX, y: pixelY });
 		},
-		[enableMouseInteraction, gl, throttledSetMousePos],
+		[enableMouseInteraction, gl, throttledSetMousePos, size],
 	);
 
 	return (

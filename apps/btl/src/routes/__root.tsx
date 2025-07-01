@@ -6,19 +6,44 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import Dither from "../blocks/Backgrounds/Dither/Dither.tsx";
-import { useOptionsStore } from "../store/useOptionsStore.ts";
 
 export const Route = createRootRoute({
 	component: () => {
-		const { view, setView } = useOptionsStore();
 		const location = useLocation();
+		const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+		useEffect(() => {
+			const handleMouseMove = (e: MouseEvent) => {
+				setMousePosition({
+					x: e.clientX,
+					y: e.clientY,
+				});
+			};
+
+			window.addEventListener("mousemove", handleMouseMove);
+			return () => window.removeEventListener("mousemove", handleMouseMove);
+		}, []);
+
 		return (
 			<motion.div
 				className={
 					"bg-black relative overflow-y-auto font-[Libertinus Mono] scroll-smooth flex flex-col items-center justify-center"
 				}
 			>
+				<div
+					className="fixed w-56 h-56 pointer-events-none z-[1]"
+					style={{
+						left: mousePosition.x - 96,
+						top: mousePosition.y - 96,
+						background:
+							"radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, transparent 100%)",
+						borderRadius: "50%",
+						filter: "blur(32px)",
+					}}
+				/>
+
 				<div
 					className="absolute left-0 h-full w-1/6 md:w-1/4 z-0"
 					style={{
@@ -51,7 +76,7 @@ export const Route = createRootRoute({
 					<Dither
 						waveColor={[1, 1, 1]}
 						disableAnimation={false}
-						enableMouseInteraction={false}
+						enableMouseInteraction={true}
 						mouseRadius={0.1}
 						colorNum={2.5}
 						waveAmplitude={0.1}
@@ -61,7 +86,7 @@ export const Route = createRootRoute({
 				</div>
 				<header className={"absolute top-2 left-1/2 right-1/2 z-[1000]"}>
 					<div className={"flex flex-col items-center justify-center"}>
-						<div className={"flex flex-row items-center justify-center"}>
+						<div className={"flex flex-row gap-2 items-center justify-center"}>
 							<Link to={"/"}>bottolo</Link>
 							{location.pathname
 								.split("/")
@@ -70,10 +95,8 @@ export const Route = createRootRoute({
 									const path = `/${arr.slice(0, index + 1).join("/")}`;
 									return (
 										<span key={path} className="flex items-center">
-											<span className="ml-1">/</span>
-											<Link to={path} className="mx-1">
-												{segment}
-											</Link>
+											<span>/</span>
+											<Link to={path}>{segment}</Link>
 										</span>
 									);
 								})}
@@ -82,7 +105,7 @@ export const Route = createRootRoute({
 				</header>
 				<main
 					className={
-						"relative h-screen w-screen flex flex-col items-center justify-center"
+						"relative h-screen w-screen flex flex-col items-center justify-center z-[100]"
 					}
 				>
 					<Outlet />
