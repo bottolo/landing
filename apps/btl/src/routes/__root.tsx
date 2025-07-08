@@ -44,6 +44,7 @@ export const Route = createRootRoute({
 					}}
 				/>
 				<img
+					alt={"cursor"}
 					className="hidden md:block fixed pointer-events-none z-[10000]"
 					src={"/init_cursor.svg"}
 					style={{
@@ -113,7 +114,9 @@ export const Route = createRootRoute({
 								})}
 						</div>
 					</div>
-					<Outlet />
+					<div className="absolute max-h-[87vh] md:max-h-[89vh] bottom-16 w-full overflow-y-auto flex flex-col gap-16 md:gap-32 items-center scrollbar-hide">
+						<Outlet />
+					</div>
 					<footer
 						className={"absolute bottom-2 left-1/2 -translate-x-1/2 text-white"}
 					>

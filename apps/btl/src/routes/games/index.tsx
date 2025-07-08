@@ -7,11 +7,7 @@ export const Route = createFileRoute("/games/")({
 });
 
 function RouteComponent() {
-	return (
-		<div className="absolute max-h-[87vh] md:max-h-[89vh] bottom-16 w-full overflow-y-auto flex flex-col gap-16 md:gap-32 items-center scrollbar-hide">
-			{Object.values(GAMES).map((game) => (
-				<DitherCard key={game.title} element={game} />
-			))}
-		</div>
-	);
+	return Object.values(GAMES).map((game) => (
+		<DitherCard key={game.title} element={game} />
+	));
 }
