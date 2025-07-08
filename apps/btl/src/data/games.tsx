@@ -56,44 +56,27 @@ export const GAMES: {
 		logo: <SiGodotengine className={"fill-white size-48 md:size-64"} />,
 		paragraphs: [
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum.
+				a game made in <a href={"https://godotengine.org/"}>godot</a> for the
+				university of kassel during 2024
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing.
+				it is a fairly simple game where you have to visit different worlds in
+				order to activate a mechanism which lets you finish the game
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing. Ex in eu magna magna
-				sunt occaecat amet deserunt ullamco laborum aliqua ea deserunt esse
-				anim. Ex sit do ex incididunt fugiat et. Eu excepteur ex eu enim commodo
-				Lorem veniam deserunt fugiat dolore officia amet enim sunt laborum.
-				Pariatur consectetur anim qui magna quis voluptate laborum quis ea minim
-				commodo aliquip tempor et. Aliquip officia cillum elit qui ipsum aute
-				consequat labore culpa incididunt qui voluptate nisi. Dolore ex anim
-				consectetur est occaecat duis adipisicing.
+				it was developed with{" "}
+				<a href={"https://github.com/azazellus"}>azazello</a> and two other
+				collaborators, and the idea behind it was to create different
+				environments, each with its own gimmick
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing.
+				technically there are some neat things, like infinitely looping worlds
+				and zero-g environments, but since the project was made in a short time
+				it was redesigned as a simple walking simulator with interesting places
+			</p>,
+			<p>
+				i'd say that between all the projects that i've made, this is the one
+				that i was attracted to the most during the conceptualization phase
 			</p>,
 		],
 		images: [
@@ -107,8 +90,6 @@ export const GAMES: {
 			"/games/octant/oct_7.png",
 			"/games/octant/oct_8.png",
 			"/games/octant/oct_9.png",
-			"/games/octant/oct_10.png",
-			"/games/octant/oct_11.png",
 		],
 	},
 	phony: {
@@ -117,44 +98,25 @@ export const GAMES: {
 		logo: <SiGodotengine className={"fill-white size-48 md:size-64"} />,
 		paragraphs: [
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum.
+				my second project made in <a href={"https://godotengine.org/"}>godot</a>{" "}
+				with <a href={"https://github.com/azazellus"}>azazello</a> which aimed
+				to replicate a visual novel by using a very interesting library called{" "}
+				<a href={"https://github.com/nathanhoad/godot_dialogue_manager"}>
+					godot dialogue manager
+				</a>
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing.
+				it has never been finished, but technically speaking it has interesting
+				elements such as branching dialogues, a reactive environment and story
+				based on your choices and the coolest art style, for which i have to
+				credit <a href={"https://github.com/roxmysox"}>roxanne</a>
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing. Ex in eu magna magna
-				sunt occaecat amet deserunt ullamco laborum aliqua ea deserunt esse
-				anim. Ex sit do ex incididunt fugiat et. Eu excepteur ex eu enim commodo
-				Lorem veniam deserunt fugiat dolore officia amet enim sunt laborum.
-				Pariatur consectetur anim qui magna quis voluptate laborum quis ea minim
-				commodo aliquip tempor et. Aliquip officia cillum elit qui ipsum aute
-				consequat labore culpa incididunt qui voluptate nisi. Dolore ex anim
-				consectetur est occaecat duis adipisicing.
+				it visually tried to blend 3d elements along with 2d ones to create an
+				unique environment, and i have to say that it succeeded in doing so
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing.
+				perhaps, one day, i'll return to it... "phony" isn't even its name!
 			</p>,
 		],
 		images: [
@@ -180,7 +142,7 @@ export const GAMES: {
 					meta quest 2
 				</a>{" "}
 				where you have to connect rays of light to the respective inputs in
-				order to proceed
+				order to finish the game
 			</p>,
 
 			<p>
@@ -191,29 +153,14 @@ export const GAMES: {
 				element in init.Sense's projects
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing. Ex in eu magna magna
-				sunt occaecat amet deserunt ullamco laborum aliqua ea deserunt esse
-				anim. Ex sit do ex incididunt fugiat et. Eu excepteur ex eu enim commodo
-				Lorem veniam deserunt fugiat dolore officia amet enim sunt laborum.
-				Pariatur consectetur anim qui magna quis voluptate laborum quis ea minim
-				commodo aliquip tempor et. Aliquip officia cillum elit qui ipsum aute
-				consequat labore culpa incididunt qui voluptate nisi. Dolore ex anim
-				consectetur est occaecat duis adipisicing.
+				what was interesting about its level design was the fact that the whole
+				gameplay was linked to this elevator at the center that you had to reach
+				in order to proceed
 			</p>,
 			<p>
-				Ex in eu magna magna sunt occaecat amet deserunt ullamco laborum aliqua
-				ea deserunt esse anim. Ex sit do ex incididunt fugiat et. Eu excepteur
-				ex eu enim commodo Lorem veniam deserunt fugiat dolore officia amet enim
-				sunt laborum. Pariatur consectetur anim qui magna quis voluptate laborum
-				quis ea minim commodo aliquip tempor et. Aliquip officia cillum elit qui
-				ipsum aute consequat labore culpa incididunt qui voluptate nisi. Dolore
-				ex anim consectetur est occaecat duis adipisicing.
+				considering that it was made with a vr and that i had no prior
+				experience, i'd say i'm mostly proud of what i have achieved, although
+				it is not complete
 			</p>,
 		],
 		images: [
