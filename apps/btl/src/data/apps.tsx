@@ -50,12 +50,10 @@ export const APPS: {
 			</p>,
 		],
 		images: [
-			"/img_1.png",
-			"/img_2.png",
-			"/img_3.png",
-			"/img_4.png",
-			"/img_5.png",
-			"/img_6.png",
+			"/apps/landing/lnd_0.png",
+			"/apps/landing/lnd_1.png",
+			"/apps/landing/lnd_2.png",
+			"/apps/landing/lnd_3.png",
 		],
 	},
 	cccd: {

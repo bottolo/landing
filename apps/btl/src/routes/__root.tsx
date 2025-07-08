@@ -41,7 +41,7 @@ export const Route = createRootRoute({
 
 				const timer = setTimeout(() => {
 					setShowBlackScreen(false);
-				}, 2000);
+				}, 1000);
 
 				prevPathname.current = location.pathname;
 
