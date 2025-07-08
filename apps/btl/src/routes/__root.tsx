@@ -5,14 +5,17 @@ import {
 	useLocation,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import Dither from "../blocks/Backgrounds/Dither/Dither.tsx";
 
 export const Route = createRootRoute({
 	component: () => {
 		const location = useLocation();
 		const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+		const [showBlackScreen, setShowBlackScreen] = useState(false);
+		const prevPathname = useRef(location.pathname);
+		const isInitialLoad = useRef(true);
 
 		useEffect(() => {
 			const handleMouseMove = (e: MouseEvent) => {
@@ -26,12 +29,44 @@ export const Route = createRootRoute({
 			return () => window.removeEventListener("mousemove", handleMouseMove);
 		}, []);
 
+		useEffect(() => {
+			if (isInitialLoad.current) {
+				isInitialLoad.current = false;
+				prevPathname.current = location.pathname;
+				return;
+			}
+
+			if (prevPathname.current !== location.pathname) {
+				setShowBlackScreen(true);
+
+				const timer = setTimeout(() => {
+					setShowBlackScreen(false);
+				}, 2000);
+
+				prevPathname.current = location.pathname;
+
+				return () => clearTimeout(timer);
+			}
+		}, [location.pathname]);
+
 		return (
 			<motion.div
 				className={
 					"bg-black relative overflow-y-auto font-[Libertinus Mono] scroll-smooth flex flex-col items-center justify-center"
 				}
 			>
+				<AnimatePresence>
+					{showBlackScreen && (
+						<motion.div
+							className="fixed inset-0 bg-black z-[10001]"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.05, ease: "linear" }}
+						/>
+					)}
+				</AnimatePresence>
+
 				<div
 					className="hidden md:block fixed w-56 h-56 pointer-events-none z-[1]"
 					style={{
