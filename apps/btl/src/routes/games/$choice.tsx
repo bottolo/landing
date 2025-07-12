@@ -34,7 +34,7 @@ function RouteComponent() {
 		<div className={"flex flex-col items-center"}>
 			<div
 				className={cn(
-					"flex flex-col items-center justify-start gap-16 md:gap-32 opacity-20 w-[80vw] overflow-hidden scale-80 transition-all duration-800 cursor-pointer group",
+					"flex flex-col items-center justify-start gap-32 md:gap-64 opacity-20 w-[80vw] overflow-hidden scale-80 transition-all duration-800 cursor-pointer group",
 					view === "images" &&
 						"overflow-y-auto scrollbar-hide z-[1] opacity-100 scale-100",
 				)}

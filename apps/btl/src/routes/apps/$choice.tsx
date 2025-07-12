@@ -23,19 +23,19 @@ function RouteComponent() {
 			: [
 					"Content not found for this selection.",
 					"Please check the URL or navigate back to the main page.",
-				]
+				];
 
 	const displayImages = images.length > 0 ? images : ["/img.png"];
 
 	const toggleView = () => {
 		setView(view === "images" ? "text" : "images");
-	}
+	};
 
 	return (
 		<div className={"flex flex-col items-center"}>
 			<div
 				className={cn(
-					"flex flex-col items-center justify-start gap-16 md:gap-32 opacity-20 w-[80vw] overflow-hidden scale-80 transition-all duration-800 cursor-pointer group",
+					"flex flex-col items-center justify-start gap-32 md:gap-64 opacity-20 w-[80vw] overflow-hidden scale-80 transition-all duration-800 cursor-pointer group",
 					view === "images" &&
 						"overflow-y-auto scrollbar-hide z-[1] opacity-100 scale-100",
 				)}
@@ -77,5 +77,5 @@ function RouteComponent() {
 				))}
 			</div>
 		</div>
-	)
+	);
 }
