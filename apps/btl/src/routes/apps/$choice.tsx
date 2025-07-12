@@ -1,6 +1,5 @@
 import { createFileRoute, useParams } from "@tanstack/react-router";
 import { APPS } from "../../data/apps.tsx";
-import { GAMES } from "../../data/games.tsx";
 import { cn } from "../../lib/cn.ts";
 import { getImagesByTitle } from "../../lib/get-images-by-title.ts";
 import { getParagraphsByTitle } from "../../lib/get-paragraphs-by-title.ts";

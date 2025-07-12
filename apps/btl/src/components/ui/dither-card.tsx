@@ -130,12 +130,18 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 					className={cn(
 						"text-left text-xl md:text-4xl",
 						"mb-2 md:mb-0",
-						isHovered ? "opacity-50" : "opacity-10",
+						isHovered
+							? "opacity-125 md:opacity-50"
+							: "opacity-70 md:opacity-10",
 					)}
 				>
 					{element.title}
 				</p>
-				<div className={cn(isHovered ? "opacity-30" : "opacity-10")}>
+				<div
+					className={cn(
+						isHovered ? "opacity-70 md:opacity-30" : "opacity-40 md:opacity-10",
+					)}
+				>
 					{" "}
 					{element.logo}
 				</div>
