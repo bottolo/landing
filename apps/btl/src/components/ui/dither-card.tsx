@@ -112,19 +112,9 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 	};
 
 	return (
-		<div>
-			<div className={cn("flex flex-row ")}>
-				<p
-					className={cn(
-						"text-md md:text-2xl transition-opacity ease-in-out duration-500",
-						isHovered ? "opacity-100" : "opacity-50",
-					)}
-				>
-					/{element.title}
-				</p>
-			</div>
+		<Magnet padding={100} disabled={false} magnetStrength={25}>
 			<motion.div
-				className="relative flex flex-col items-center justify-center border-2 border-stone-700 rounded-none overflow-hidden h-[30vh] md:h-[35vh] w-[80vw] md:w-[45vw]"
+				className="flex flex-row items-center justify-between border-2 p-2 border-stone-700 rounded-none overflow-hidden h-[10vh] md:h-[15vh] w-[70vw] md:w-[45vw]"
 				onMouseEnter={() => setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
 				onTouchStart={handleTouchStart}
@@ -132,28 +122,25 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 				onTouchCancel={handleTouchCancel}
 				onClick={() => navigate({ to: element.link })}
 			>
-				{!isMobile ? (
-					<Suspense fallback={<DitherFallback />}>
-						<DitherBackground isHovered={isHovered} />
-					</Suspense>
-				) : (
-					<Suspense fallback={<NoImageFallback />}>
-						<MobileBackground isHovered={isHovered} isTapped={isTapped} />
-					</Suspense>
-				)}
+				<Suspense fallback={<DitherFallback />}>
+					<DitherBackground isHovered={isHovered} />
+				</Suspense>
 
-				<motion.div
+				<p
 					className={cn(
-						"transition-opacity ease-in-out duration-500 absolute inset-0 flex items-center justify-center z-10 opacity-10 scale-75 md:scale-100",
-						isHovered && "opacity-30",
+						"text-left text-xl md:text-4xl",
+						"mb-2 md:mb-0",
+						isHovered ? "opacity-50" : "opacity-10",
 					)}
 				>
-					<Magnet padding={150} disabled={false} magnetStrength={25}>
-						{element.logo}
-					</Magnet>
-				</motion.div>
+					{element.title}
+				</p>
+				<div className={cn(isHovered ? "opacity-30" : "opacity-10")}>
+					{" "}
+					{element.logo}
+				</div>
 			</motion.div>
-		</div>
+		</Magnet>
 	);
 });
 

@@ -208,9 +208,9 @@ export const Route = createRootRoute({
 						enableMouseInteraction={false}
 						mouseRadius={0.3}
 						colorNum={2.5}
-						waveAmplitude={0.1}
-						waveFrequency={2}
-						waveSpeed={0.01}
+						waveAmplitude={0.5}
+						waveFrequency={1.5}
+						waveSpeed={0.05}
 					/>
 				</div>
 				<div
@@ -226,11 +226,11 @@ export const Route = createRootRoute({
 						waveColor={[1, 1, 1]}
 						disableAnimation={false}
 						enableMouseInteraction={false}
-						mouseRadius={0.1}
+						mouseRadius={0.3}
 						colorNum={2.5}
-						waveAmplitude={0.1}
-						waveFrequency={0.1}
-						waveSpeed={0.01}
+						waveAmplitude={0.5}
+						waveFrequency={1.5}
+						waveSpeed={0.05}
 					/>
 				</div>
 				<main
@@ -255,7 +255,7 @@ export const Route = createRootRoute({
 								})}
 						</div>
 					</div>
-					<div className="absolute max-h-[87vh] md:max-h-[89vh] bottom-16 w-full overflow-y-auto flex flex-col gap-16 md:gap-32 items-center scrollbar-hide">
+					<div className="absolute max-h-[87vh] md:max-h-[89vh] top-16 w-full overflow-y-auto flex flex-col gap-16 md:gap-32 items-center justify-start scrollbar-hide py-8">
 						<Outlet />
 					</div>
 					{/** biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}

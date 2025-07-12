@@ -1,4 +1,4 @@
-import { MdWeb } from "react-icons/md";
+import { SiReact } from "react-icons/si";
 import type { Content } from "../types/content.ts";
 
 export const APPS: {
@@ -7,7 +7,7 @@ export const APPS: {
 	landing: {
 		title: "landing",
 		link: "/apps/landing",
-		logo: <MdWeb className={"fill-white size-48 md:size-64"} />,
+		logo: <SiReact className={"fill-white size-32 md:size-64"} />,
 		paragraphs: [
 			<p>
 				my personal landing page: a project which showcases how i approach web
@@ -59,13 +59,7 @@ export const APPS: {
 	cccd: {
 		title: "cccd",
 		link: "/apps/cccd",
-		logo: (
-			<img
-				alt={"cccd"}
-				className={"opacity-40 size-48 md:size-64"}
-				src={"/heart.svg"}
-			/>
-		),
+		logo: <SiReact className={"fill-white size-32 md:size-64"} />,
 		paragraphs: [
 			<p>
 				a project that i've worked on in the first half of 2025: it's built on
@@ -113,13 +107,7 @@ export const APPS: {
 	mediation: {
 		title: "mediation",
 		link: "/apps/mediation",
-		logo: (
-			<img
-				alt={"mediation"}
-				className={"fill-white«„ size-48 md:size-64"}
-				src={"/mc.svg"}
-			/>
-		),
+		logo: <SiReact className={"fill-white size-32 md:size-64"} />,
 		paragraphs: [
 			<p>
 				funny that i've decided to include this website in my own, but it's
