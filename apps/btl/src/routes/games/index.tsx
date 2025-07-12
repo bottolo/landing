@@ -7,7 +7,7 @@ export const Route = createFileRoute("/games/")({
 });
 
 function RouteComponent() {
-	return Object.values(GAMES).map((game) => (
-		<DitherCard key={game.title} element={game} />
+	return Object.values(GAMES).map((game, index) => (
+		<DitherCard index={index} key={game.title} element={game} />
 	));
 }

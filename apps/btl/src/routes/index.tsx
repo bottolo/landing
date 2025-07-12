@@ -7,8 +7,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-	return ROOT_ELEMENTS.map((element) => (
-		<DitherCard key={element.title} element={element} />
+	return ROOT_ELEMENTS.map((element, index) => (
+		<DitherCard index={index} key={element.title} element={element} />
 	));
 }
 

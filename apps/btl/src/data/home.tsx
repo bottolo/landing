@@ -1,52 +1,31 @@
-import { BsMouseFill } from "react-icons/bs";
-import { PiGameController, PiQuestionMark, PiUser } from "react-icons/pi";
 import type { Content } from "../types/content";
 
 export const ROOT_ELEMENTS: Content[] = [
 	{
 		title: "apps",
 		link: "/apps",
-		logo: (
-			<div className={"flex flex-row gap-2 md:gap-8"}>
-				<BsMouseFill className={"fill-white size-32 md:size-64"} />
-			</div>
-		),
+		logo: <p className={"text-[36px] md:text-[70px]"}>0</p>,
 		paragraphs: [],
 		images: [],
 	},
 	{
 		title: "games",
 		link: "/games",
-		logo: (
-			<div className={"flex flex-row gap-2 md:gap-8"}>
-				<PiGameController className={"fill-white  size-32 md:size-64"} />
-			</div>
-		),
+		logo: <p className={"text-[36px] md:text-[70px]"}>1</p>,
 		paragraphs: [],
 		images: [],
 	},
 	{
 		title: "contributions",
 		link: "/contributions",
-		logo: (
-			<div className={"flex flex-row gap-2 md:gap-8"}>
-				<PiUser className={"fill-white  size-32 md:size-64"} />
-			</div>
-		),
+		logo: <p className={"text-[36px] md:text-[70px]"}>2</p>,
 		paragraphs: [],
 		images: [],
 	},
 	{
 		title: "about",
 		link: "/about",
-		logo: (
-			<div className={"flex flex-row gap-2 md:gap-8"}>
-				<PiQuestionMark
-					className={"fill-white size-32 md:size-64"}
-					size={150}
-				/>
-			</div>
-		),
+		logo: <p className={"text-[36px] md:text-[70px]"}>3</p>,
 		paragraphs: [],
 		images: [],
 	},

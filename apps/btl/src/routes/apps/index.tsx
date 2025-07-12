@@ -7,7 +7,7 @@ export const Route = createFileRoute("/apps/")({
 });
 
 function RouteComponent() {
-	return Object.values(APPS).map((app) => (
-		<DitherCard key={app.title} element={app} />
+	return Object.values(APPS).map((app, index) => (
+		<DitherCard index={index} key={app.title} element={app} />
 	));
 }

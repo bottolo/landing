@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { SiGodotengine, SiUnity } from "react-icons/si";
 import type { Content } from "../types/content";
 
 export const GAMES: {
@@ -8,7 +7,7 @@ export const GAMES: {
 	noclip: {
 		title: "noclip",
 		link: "/games/noclip",
-		logo: <SiUnity className={"fill-white size-32 md:size-64"} />,
+		logo: <p className={"text-[36px] md:text-[70px]"}>0</p>,
 		paragraphs: [
 			<p>
 				this is a project that i've made in collaboration with the politecnico
@@ -53,7 +52,7 @@ export const GAMES: {
 	octant: {
 		title: "octant",
 		link: "/games/octant",
-		logo: <SiGodotengine className={"fill-white size-32 md:size-64"} />,
+		logo: <p className={"text-[36px] md:text-[70px]"}>1</p>,
 		paragraphs: [
 			<p>
 				a game made in <a href={"https://godotengine.org/"}>godot</a> for the
@@ -95,7 +94,7 @@ export const GAMES: {
 	phony: {
 		title: "phony",
 		link: "/games/phony",
-		logo: <SiGodotengine className={"fill-white size-32 md:size-64"} />,
+		logo: <p className={"text-[36px] md:text-[70px]"}>2</p>,
 		paragraphs: [
 			<p>
 				my second project made in <a href={"https://godotengine.org/"}>godot</a>{" "}
@@ -131,7 +130,7 @@ export const GAMES: {
 	visio: {
 		title: "visio",
 		link: "/games/visio",
-		logo: <SiGodotengine className={"fill-white size-32 md:size-64"} />,
+		logo: <p className={"text-[36px] md:text-[70px]"}>3</p>,
 		paragraphs: [
 			<p>
 				visio is a project that i've made for the virtual reality course at the

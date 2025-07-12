@@ -30,64 +30,14 @@ const DitherBackground = React.memo(({ isHovered }: DitherBackgroundProps) => (
 	</motion.div>
 ));
 
-const MobileBackground = React.memo(
-	({ isHovered, isTapped }: { isHovered: boolean; isTapped: boolean }) => (
-		<motion.div
-			className={cn(
-				"absolute inset-0 transition-all ease-in-out duration-1000",
-				"bg-gradient-to-br from-stone-700 to-stone-800",
-			)}
-			initial={{
-				scale: 1,
-				opacity: 0.4,
-			}}
-			animate={{
-				scale: isTapped ? 1.02 : 1,
-				opacity: isTapped ? 0.8 : isHovered ? 0.6 : 0.4,
-			}}
-			transition={{
-				duration: isTapped ? 0.1 : 0.3,
-				ease: "easeOut",
-			}}
-		>
-			<motion.img
-				src={"/static_bg.png"}
-				alt="Background"
-				className="w-full h-full object-cover"
-				initial={{
-					opacity: 0.4,
-					scale: 1,
-				}}
-				animate={{
-					opacity: isTapped ? 0.7 : 0.4,
-					scale: isTapped ? 1.01 : 1,
-				}}
-				transition={{
-					duration: isTapped ? 0.1 : 0.3,
-					ease: "easeOut",
-				}}
-			/>
-
-			<motion.div
-				className="absolute inset-0 bg-white/10"
-				initial={{ opacity: 0 }}
-				animate={{
-					opacity: isTapped ? 1 : 0,
-				}}
-				transition={{
-					duration: isTapped ? 0.1 : 0.2,
-					ease: "easeInOut",
-				}}
-			/>
-		</motion.div>
-	),
-);
-
 const DitherFallback = () => <div className="absolute inset-0 bg-stone-800" />;
 
-const NoImageFallback = () => <div className="absolute inset-0 bg-stone-900" />;
+interface DitherCardProps {
+	element: Content;
+	index: number; // Add index prop
+}
 
-const DitherCard = React.memo(({ element }: { element: Content }) => {
+const DitherCard = React.memo(({ element, index }: DitherCardProps) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isTapped, setIsTapped] = useState(false);
 	const isMobile = useIsMobile();
@@ -114,7 +64,7 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 	return (
 		<Magnet padding={100} disabled={false} magnetStrength={25}>
 			<motion.div
-				className="flex flex-row items-center justify-between border-2 p-2 border-stone-700 rounded-none overflow-hidden h-[10vh] md:h-[15vh] w-[70vw] md:w-[45vw]"
+				className="flex flex-row items-center justify-between border-2 p-4 border-stone-700 rounded-none overflow-hidden h-[10vh] md:h-[15vh] w-[70vw] md:w-[45vw]"
 				onMouseEnter={() => setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
 				onTouchStart={handleTouchStart}
@@ -126,24 +76,38 @@ const DitherCard = React.memo(({ element }: { element: Content }) => {
 					<DitherBackground isHovered={isHovered} />
 				</Suspense>
 
-				<p
-					className={cn(
-						"text-left text-xl md:text-4xl",
-						"mb-2 md:mb-0",
-						isHovered
-							? "opacity-125 md:opacity-50"
-							: "opacity-70 md:opacity-10",
-					)}
-				>
-					{element.title}
-				</p>
-				<div
-					className={cn(
-						isHovered ? "opacity-70 md:opacity-30" : "opacity-40 md:opacity-10",
-					)}
-				>
-					{" "}
-					{element.logo}
+				<div className="flex-1 flex items-center min-w-0">
+					<span
+						className={cn(
+							"text-left text-xl md:text-4xl flex-shrink-0",
+							isHovered
+								? "opacity-125 md:opacity-50"
+								: "opacity-70 md:opacity-10",
+						)}
+					>
+						{index}
+					</span>
+
+					<div
+						className={cn(
+							"flex-1 relative h-3 md:h-6",
+							"border-b-2 md:border-b-4 border-dotted",
+							isHovered
+								? "opacity-125 md:opacity-50"
+								: "opacity-70 md:opacity-10",
+						)}
+					/>
+
+					<span
+						className={cn(
+							"text-left text-xl md:text-4xl flex-shrink-0",
+							isHovered
+								? "opacity-125 md:opacity-50"
+								: "opacity-70 md:opacity-10",
+						)}
+					>
+						{element.title}
+					</span>
 				</div>
 			</motion.div>
 		</Magnet>
