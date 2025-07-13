@@ -8,7 +8,7 @@ function About() {
 	return (
 		<div
 			className={
-				"flex flex-col w-[45vw] text-center gap-16 md:gap-32 text-lg/10 md:text-2xl/14"
+				"flex flex-col w-[45vw] h-[90vh] overflow-y-auto text-center gap-16 md:gap-32 text-lg/10 md:text-2xl/14"
 			}
 		>
 			<p>

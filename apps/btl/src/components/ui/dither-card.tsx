@@ -64,7 +64,7 @@ const DitherCard = React.memo(({ element, index }: DitherCardProps) => {
 	return (
 		<Magnet padding={100} disabled={false} magnetStrength={25}>
 			<motion.div
-				className="flex flex-row items-center justify-between border-2 p-4 border-stone-700 rounded-none overflow-hidden h-[10vh] md:h-[15vh] w-[70vw] md:w-[45vw]"
+				className="flex flex-row items-center justify-between border-2 p-4 border-stone-700 rounded-none overflow-hidden h-[10vh] md:h-[15vh] w-[70vw] md:w-[45vw] cursor-[url('/init_cursor_hover.svg'),_pointer]"
 				onMouseEnter={() => setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
 				onTouchStart={handleTouchStart}

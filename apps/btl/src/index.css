@@ -1,10 +1,6 @@
 @import "tailwindcss";
 @import "tailwind-scrollbar-hide/v4";
 
-* {
-	cursor: none;
-}
-
 :root {
 	font-family:
 		Libertinus Mono,
