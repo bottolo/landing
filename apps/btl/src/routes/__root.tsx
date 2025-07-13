@@ -132,7 +132,7 @@ export const Route = createRootRoute({
 				<div
 					className={cn(
 						"absolute left-0 h-full w-1/6 md:w-1/4 z-0  transition-all duration-[1s]",
-						view === "text" ? "" : "invert",
+						view === "text" ? "invert" : "",
 						isMuted ? "opacity-50" : "opacity-100",
 					)}
 					style={{
@@ -156,7 +156,7 @@ export const Route = createRootRoute({
 				<div
 					className={cn(
 						"absolute right-0 h-full w-1/6 md:w-1/4 z-0 rotate-180 transition-all duration-[1s]",
-						view === "text" ? "" : "invert",
+						view === "text" ? "invert" : "",
 						isMuted ? "opacity-50" : "opacity-100",
 					)}
 					style={{
