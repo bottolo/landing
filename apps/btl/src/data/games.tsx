@@ -15,10 +15,22 @@ export const GAMES: {
 				milan
 			</p>,
 			<p>
-				it's made in <a href={"https://unity.com/"}>unity</a> and it is the
-				first game that i have ever developed, contributing to ui/ux aspects as
-				well as the game design. check out its
-				<a href={"https://polimi-game-collective.itch.io/noclip"}> itch.io</a>{" "}
+				it's made in{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://unity.com/"}
+				>
+					unity
+				</a>{" "}
+				and it is the first game that i have ever developed, contributing to
+				ui/ux aspects as well as the game design. check out its
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://polimi-game-collective.itch.io/noclip"}
+				>
+					{" "}
+					itch.io
+				</a>{" "}
 				page! below a brief description taken from the aforementioned link:
 			</p>,
 			<p>
@@ -55,8 +67,14 @@ export const GAMES: {
 		logo: <p className={"text-[36px] md:text-[70px]"}>1</p>,
 		paragraphs: [
 			<p>
-				a game made in <a href={"https://godotengine.org/"}>godot</a> for the
-				university of kassel during 2024
+				a game made in{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://godotengine.org/"}
+				>
+					godot
+				</a>{" "}
+				for the university of kassel during 2024
 			</p>,
 			<p>
 				it is a fairly simple game where you have to visit different worlds in
@@ -64,9 +82,14 @@ export const GAMES: {
 			</p>,
 			<p>
 				it was developed with{" "}
-				<a href={"https://github.com/azazellus"}>azazello</a> and two other
-				collaborators, and the idea behind it was to create different
-				environments, each with its own gimmick
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/azazellus"}
+				>
+					azazello
+				</a>{" "}
+				and two other collaborators, and the idea behind it was to create
+				different environments, each with its own gimmick
 			</p>,
 			<p>
 				technically there are some neat things, like infinitely looping worlds
@@ -97,10 +120,26 @@ export const GAMES: {
 		logo: <p className={"text-[36px] md:text-[70px]"}>2</p>,
 		paragraphs: [
 			<p>
-				my second project made in <a href={"https://godotengine.org/"}>godot</a>{" "}
-				with <a href={"https://github.com/azazellus"}>azazello</a> which aimed
-				to replicate a visual novel by using a very interesting library called{" "}
-				<a href={"https://github.com/nathanhoad/godot_dialogue_manager"}>
+				my second project made in{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://godotengine.org/"}
+				>
+					godot
+				</a>{" "}
+				with{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/azazellus"}
+				>
+					azazello
+				</a>{" "}
+				which aimed to replicate a visual novel by using a very interesting
+				library called{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/nathanhoad/godot_dialogue_manager"}
+				>
 					godot dialogue manager
 				</a>
 			</p>,
@@ -108,7 +147,13 @@ export const GAMES: {
 				it has never been finished, but technically speaking it has interesting
 				elements such as branching dialogues, a reactive environment and story
 				based on your choices and the coolest art style, for which i have to
-				credit <a href={"https://github.com/roxmysox"}>roxanne</a>
+				credit{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/roxmysox"}
+				>
+					roxanne
+				</a>
 			</p>,
 			<p>
 				it visually tried to blend 3d elements along with 2d ones to create an
@@ -135,9 +180,18 @@ export const GAMES: {
 			<p>
 				visio is a project that i've made for the virtual reality course at the
 				university of milan during 2023. it is a 3d VR puzzle game made with{" "}
-				<a href={"https://unity.com/"}> unity </a> and developed with the aid of
-				the{" "}
-				<a href={"https://www.meta.com/it/en/quest/products/quest-2/"}>
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://unity.com/"}
+				>
+					{" "}
+					unity{" "}
+				</a>{" "}
+				and developed with the aid of the{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://www.meta.com/it/en/quest/products/quest-2/"}
+				>
 					meta quest 2
 				</a>{" "}
 				where you have to connect rays of light to the respective inputs in
@@ -146,10 +200,21 @@ export const GAMES: {
 
 			<p>
 				designed in collaboration with{" "}
-				<a href={"https://github.com/azazellus"}>azazello</a> after developing
-				<Link to={"/games/noclip"}>noclip</Link>, it features low-poly, basic
-				spherical shapes and an ethereal landscape which is always a common
-				element in init.Sense's projects
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/azazellus"}
+				>
+					azazello
+				</a>{" "}
+				after developing
+				<Link
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					to={"/games/noclip"}
+				>
+					noclip
+				</Link>
+				, it features low-poly, basic spherical shapes and an ethereal landscape
+				which is always a common element in init.Sense's projects
 			</p>,
 			<p>
 				what was interesting about its level design was the fact that the whole

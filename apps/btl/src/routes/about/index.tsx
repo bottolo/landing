@@ -13,27 +13,81 @@ function About() {
 		>
 			<p>
 				i'm samuele castiglia (aka{" "}
-				<a href={"https://github.com/bottolo"}>bottolo</a>). i'm a full-stack
-				developer working at <a href={"https://fiscomed.it/"}>fiscomed</a>.
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/bottolo"}
+				>
+					bottolo
+				</a>
+				). i'm a full-stack developer working at{" "}
+				<a href={"https://fiscomed.it/"}>fiscomed</a>.
 			</p>
 			<p>
 				i've studied computer science at the{" "}
-				<a href={"https://www.unimi.it/it"}>university of milan</a> and, after
-				obtaining my degree, i've started working as a technical consultant at
-				<a href={"https://www.gntechonomy.com/"}> gn techonomy</a> until july
-				2025, where i've started covering the role of full-stack developer at
-				the company mentioned above
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://www.unimi.it/it"}
+				>
+					university of milan
+				</a>{" "}
+				and, after obtaining my degree, i've started working as a technical
+				consultant at
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://www.gntechonomy.com/"}
+				>
+					{" "}
+					gn techonomy
+				</a>{" "}
+				until july 2025, where i've started covering the role of full-stack
+				developer at the company mentioned above
 			</p>
 			<p>
 				in the meantime i've worked in several projects which will be found in
 				this landing page. mostly games made with{" "}
-				<a href={"https://godotengine.org/"}>godot</a> and{" "}
-				<a href={"https://unity.com/"}>unity</a>, but i have also developed web
-				applications using <a href={"https://react.dev/"}>react</a>,
-				<a href={"https://www.typescriptlang.org/"}> typescript</a>,{" "}
-				<a href={"https://bun.sh/"}> bun</a> with deployments on{" "}
-				<a href={"https://vercel.com/"}>vercel</a> and{" "}
-				<a href={"https://fly.io/"}>fly.io</a>
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://godotengine.org/"}
+				>
+					godot
+				</a>{" "}
+				and{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://unity.com/"}
+				>
+					unity
+				</a>
+				, but i have also developed web applications using{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://react.dev/"}
+				>
+					react
+				</a>
+				,
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://www.typescriptlang.org/"}
+				>
+					{" "}
+					typescript
+				</a>
+				,{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://bun.sh/"}
+				>
+					{" "}
+					bun
+				</a>{" "}
+				with deployments on <a href={"https://vercel.com/"}>vercel</a> and{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://fly.io/"}
+				>
+					fly.io
+				</a>
 			</p>{" "}
 			<p>
 				my main areas of interest are web and game development, mostly visually

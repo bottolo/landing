@@ -110,18 +110,40 @@ export const APPS: {
 		paragraphs: [
 			<p>
 				funny that i've decided to include this website in my own, but it's
-				still built on top of <a href={"https://react.dev/"}>react </a>
-				and <a href={"https://www.typescriptlang.org/"}>typescript</a> and it is
-				a full-stack application with no database service, deployed on{" "}
-				<a href={"https://fly.io/"}>fly.io</a>
+				still built on top of{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://react.dev/"}
+				>
+					react{" "}
+				</a>
+				and{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://www.typescriptlang.org/"}
+				>
+					typescript
+				</a>{" "}
+				and it is a full-stack application with no database service, deployed on{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://fly.io/"}
+				>
+					fly.io
+				</a>
 			</p>,
 			<p>
 				a landing page designed for my father! it's very simple, but it
 				showcases a design drastically different from the one used here to prove
 				that, apart from creative manifestos, standard ui/ux practices are still
 				my thing. it's not entirely my work, as{" "}
-				<a href={"https://github.com/FrankieBortot"}>frankie</a> designed the
-				website
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/FrankieBortot"}
+				>
+					frankie
+				</a>{" "}
+				designed the website
 			</p>,
 			<p>
 				it relies on google calendar apis to fetch events and show my father's
