@@ -13,13 +13,43 @@ export const APPS: {
 				development both creatively and technically
 			</p>,
 			<p>
-				it is a monorepo developed with <a href={"https://react.dev/"}>react</a>
-				, <a href={"https://www.typescriptlang.org/"}>typescript</a>, and{" "}
-				<a href={"https://tailwindcss.com/"}>tailwind</a>, built with{" "}
-				<a href={"https://turborepo.com/"} target={"_blank"} rel="noopener">
+				it is a monorepo developed with{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://react.dev/"}
+				>
+					react
+				</a>
+				,{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://www.typescriptlang.org/"}
+				>
+					typescript
+				</a>
+				, and{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://tailwindcss.com/"}
+				>
+					tailwind
+				</a>
+				, built with{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://turborepo.com/"}
+					target={"_blank"}
+					rel="noopener"
+				>
 					turborepo
 				</a>{" "}
-				and deployed on <a href={"https://vercel.com/"}>vercel</a>
+				and deployed on{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://vercel.com/"}
+				>
+					vercel
+				</a>
 			</p>,
 			<p>
 				the idea behind this tech stack for a landing page comes from the need
@@ -40,6 +70,7 @@ export const APPS: {
 			<p>
 				if you want to learn more about unconventional designs, take a look at{" "}
 				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
 					href={
 						"https://books.google.it/books/about/72_dpi.html?id=ZBh0QgAACAAJ&redir_esc=y"
 					}
@@ -62,17 +93,51 @@ export const APPS: {
 		paragraphs: [
 			<p>
 				a project that i've worked on in the first half of 2025: it's built on
-				top of <a href={"https://react.dev/"}>react </a>
-				and <a href={"https://www.typescriptlang.org/"}>typescript</a> and it is
-				a full-stack application with no database service, deployed on{" "}
-				<a href={"https://fly.io/"}>fly.io</a>
+				top of{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://react.dev/"}
+				>
+					react{" "}
+				</a>
+				and{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://www.typescriptlang.org/"}
+				>
+					typescript
+				</a>{" "}
+				and it is a full-stack application with no database service, deployed on{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://fly.io/"}
+				>
+					fly.io
+				</a>
 			</p>,
 			<p>
 				it relies on google docs, google sheet and{" "}
-				<a href={"https://www.zotero.org/"}>zotero</a>'s api in order to
-				retrieve the catalog; <a href={"https://bun.sh/"}>bun</a> is used to
-				serve the application and <a href={"https://hono.dev/"}>hono</a> is used
-				to route the apis
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://www.zotero.org/"}
+				>
+					zotero
+				</a>
+				's api in order to retrieve the catalog;{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://bun.sh/"}
+				>
+					bun
+				</a>{" "}
+				is used to serve the application and{" "}
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://hono.dev/"}
+				>
+					hono
+				</a>{" "}
+				is used to route the apis
 			</p>,
 			<p>
 				below the preface as written by samuele anzellotti, the author of the
