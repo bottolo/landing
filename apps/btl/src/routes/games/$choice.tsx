@@ -2,14 +2,14 @@ import { createFileRoute, useParams } from "@tanstack/react-router";
 import { GAMES } from "../../data/games.tsx";
 import { getImagesByTitle } from "../../lib/get-images-by-title.ts";
 import { getParagraphsByTitle } from "../../lib/get-paragraphs-by-title.ts";
-import { useOptionsStore } from "../../store/useOptionsStore.ts";
+import { useSettingsStore } from "../../stores/useSettingsStore.ts";
 
 export const Route = createFileRoute("/games/$choice")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
-	const { view } = useOptionsStore();
+	const { view } = useSettingsStore();
 	const { choice } = useParams({ from: "/games/$choice" });
 
 	const paragraphs = getParagraphsByTitle(choice, GAMES);
@@ -25,7 +25,7 @@ function RouteComponent() {
 				? images.map((image) => (
 						<img
 							key={image}
-							className="w-full md:w-[400px] hover:w-full shadow-lg grayscale-100 hover:grayscale-0 transition-all duration-[0.5s] cursor-[url('/init_cursor_hover.svg'),_pointer]"
+							className="w-full md:w-[500px] hover:w-full shadow-lg grayscale-100 hover:grayscale-0 transition-all ease-out duration-[0.5s] cursor-[url('/init_cursor_hover.svg'),_pointer]"
 							src={image}
 							alt={`app-${choice}`}
 							onError={(e) => {

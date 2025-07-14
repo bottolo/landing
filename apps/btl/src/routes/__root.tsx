@@ -1,4 +1,10 @@
 import {
+	Listbox,
+	ListboxButton,
+	ListboxOption,
+	ListboxOptions,
+} from "@headlessui/react";
+import {
 	createRootRoute,
 	Link,
 	Outlet,
@@ -6,25 +12,24 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { PiDot } from "react-icons/pi";
 import Dither from "../blocks/Backgrounds/Dither/Dither.tsx";
 import { cn } from "../lib/cn.ts";
-import { useOptionsStore } from "../store/useOptionsStore.ts";
+import { useSettingsStore } from "../stores/useSettingsStore.ts";
 
 export const Route = createRootRoute({
 	component: () => {
 		const location = useLocation();
-		const [isMuted, setIsMuted] = useState(false);
-		const [theme, setTheme] = useState<"ascension" | "limbo">("ascension");
-
-		const { view, setView } = useOptionsStore();
+		const { view, setView, muted, setMuted, theme, setTheme } =
+			useSettingsStore();
 
 		const handleMuteToggle = () => {
-			setIsMuted(!isMuted);
+			setMuted(!muted);
 		};
 
 		useEffect(() => {
-			if (isMuted) {
+			if (muted) {
 				const audioElements = document.querySelectorAll("audio, video");
 				audioElements.forEach((element) => {
 					(element as HTMLAudioElement | HTMLVideoElement).muted = true;
@@ -85,10 +90,10 @@ export const Route = createRootRoute({
 					}
 				});
 			}
-		}, [isMuted]);
+		}, [muted]);
 
 		const muteNewAudioElements = () => {
-			if (isMuted) {
+			if (muted) {
 				const observer = new MutationObserver((mutations) => {
 					mutations.map((mutation) => {
 						mutation.addedNodes.forEach((node) => {
@@ -122,7 +127,7 @@ export const Route = createRootRoute({
 
 		useEffect(() => {
 			return muteNewAudioElements();
-		}, [isMuted]);
+		}, [muted]);
 
 		return (
 			<motion.div
@@ -134,7 +139,7 @@ export const Route = createRootRoute({
 					className={cn(
 						"absolute left-0 h-full w-1/6 md:w-1/4 z-0  transition-all duration-[1s]",
 						theme === "limbo" ? "invert" : "",
-						isMuted ? "opacity-50" : "opacity-100",
+						muted ? "opacity-50" : "opacity-100",
 					)}
 					style={{
 						maskImage:
@@ -158,7 +163,7 @@ export const Route = createRootRoute({
 					className={cn(
 						"absolute right-0 h-full w-1/6 md:w-1/4 z-0 rotate-180 transition-all duration-[1s]",
 						theme === "limbo" ? "invert" : "",
-						isMuted ? "opacity-50" : "opacity-100",
+						muted ? "opacity-50" : "opacity-100",
 					)}
 					style={{
 						maskImage:
@@ -180,7 +185,7 @@ export const Route = createRootRoute({
 				</div>
 				<header
 					className={cn(
-						"flex flex-row items-center justify-center mb-auto z-[1]",
+						"flex flex-row items-center justify-center mb-auto z-[1] mt-1",
 					)}
 				>
 					<Link
@@ -210,43 +215,88 @@ export const Route = createRootRoute({
 						})}
 				</header>
 				<main
-					className={"flex flex-col items-center justify-center z-[1] gap-16"}
+					className={
+						"flex flex-col items-center justify-center z-[1] gap-16 w-full overflow-y-auto md:py-0 py-8"
+					}
 				>
 					<Outlet />
 				</main>
-				<footer className={"flex mt-auto z-[1] gap-2"}>
+				<footer
+					className={
+						"flex flex-col items-center md:flex-row mt-auto z-[1] mb-1 justify-center w-full"
+					}
+				>
 					<p
 						className={
 							"hover:bg-white/20 cursor-[url('/init_cursor_hover.svg'),_pointer]"
 						}
 						onClick={handleMuteToggle}
 					>
-						audio: {isMuted ? "off" : "on"}
+						audio[{muted ? "off" : "on"}]
 					</p>
-					|
-					<p
-						className={
-							"hover:bg-white/20 cursor-[url('/init_cursor_hover.svg'),_pointer]"
-						}
-						onClick={() =>
-							setTheme(theme === "ascension" ? "limbo" : "ascension")
-						}
-					>
-						theme: {theme === "ascension" ? "ascension" : "limbo"}
-					</p>
+					<PiDot size={24} className={"mt-1 md:block hidden"} />
+					<Listbox value={theme} onChange={setTheme}>
+						<ListboxButton className="hover:bg-white/20 cursor-[url('/init_cursor_hover.svg'),_pointer] text-left">
+							theme["{theme}"]
+						</ListboxButton>
+						<ListboxOptions
+							anchor={{ to: "top end" }}
+							className="bg-black z-10 "
+						>
+							<ListboxOption
+								value="ascension"
+								className={({ active, selected }) =>
+									cn(
+										"cursor-[url('/init_cursor_hover.svg'),_pointer] hover:bg-white/20",
+										(selected || active) && "bg-white/20",
+									)
+								}
+							>
+								ascension
+							</ListboxOption>
+							<ListboxOption
+								value="limbo"
+								className={cn(
+									"cursor-[url('/init_cursor_hover.svg'),_pointer] hover:bg-white/20",
+								)}
+							>
+								limbo
+							</ListboxOption>
+						</ListboxOptions>
+					</Listbox>
 					{(location?.pathname.startsWith("/apps/") ||
 						location.pathname.startsWith("/games/")) && (
 						<>
-							{" "}
-							|
-							<p
-								className={
-									"hover:bg-white/20 cursor-[url('/init_cursor_hover.svg'),_pointer]"
-								}
-								onClick={() => setView(view === "images" ? "text" : "images")}
-							>
-								mode: {view === "images" ? "images" : "text"}
-							</p>
+							<PiDot size={24} className={"mt-1 md:block hidden"} />
+							<Listbox value={view} onChange={setView}>
+								<ListboxButton className="hover:bg-white/20 cursor-[url('/init_cursor_hover.svg'),_pointer] text-left">
+									mode["{view}"]
+								</ListboxButton>
+								<ListboxOptions
+									anchor={{ to: "top end" }}
+									className="bg-black z-10 "
+								>
+									<ListboxOption
+										value="text"
+										className={({ active, selected }) =>
+											cn(
+												"cursor-[url('/init_cursor_hover.svg'),_pointer] hover:bg-white/20",
+												(selected || active) && "bg-white/20",
+											)
+										}
+									>
+										text
+									</ListboxOption>
+									<ListboxOption
+										value="images"
+										className={cn(
+											"cursor-[url('/init_cursor_hover.svg'),_pointer] hover:bg-white/20",
+										)}
+									>
+										images
+									</ListboxOption>
+								</ListboxOptions>
+							</Listbox>
 						</>
 					)}
 				</footer>
