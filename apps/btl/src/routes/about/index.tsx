@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/about/")({
-	component: About,
+	component: RouteComponent,
 });
 
-function About() {
+function RouteComponent() {
 	return (
 		<div className="w-full h-[90vh] overflow-y-auto scrollbar-hide">
 			<div
