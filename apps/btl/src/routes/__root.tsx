@@ -216,7 +216,7 @@ export const Route = createRootRoute({
 				</header>
 				<main
 					className={
-						"flex flex-col items-center justify-center z-[1] gap-16 w-full overflow-y-auto md:py-0 py-8"
+						"flex flex-col items-center justify-center z-[1] gap-16 w-full overflow-y-auto md:py-4 py-8"
 					}
 				>
 					<Outlet />
