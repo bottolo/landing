@@ -1,4 +1,5 @@
 import { createFileRoute, useParams } from "@tanstack/react-router";
+import { useState } from "react";
 import { APPS } from "../../data/apps.tsx";
 import { getImagesByTitle } from "../../lib/get-images-by-title.ts";
 import { getParagraphsByTitle } from "../../lib/get-paragraphs-by-title.ts";
@@ -11,29 +12,55 @@ export const Route = createFileRoute("/apps/$choice")({
 function RouteComponent() {
 	const { view } = useSettingsStore();
 	const { choice } = useParams({ from: "/apps/$choice" });
+	const [pinnedImage, setPinnedImage] = useState<string | null>(null);
 
 	const paragraphs = getParagraphsByTitle(choice, APPS);
 	const images = getImagesByTitle(choice, APPS);
 
+	const handleImageClick = (e: React.MouseEvent, image: string) => {
+		e.stopPropagation();
+
+		if (pinnedImage) {
+			setPinnedImage(null);
+		} else {
+			setPinnedImage(image);
+		}
+	};
+
 	return (
 		<div
-			className={
-				"flex flex-col w-[45vw] h-[90vh] overflow-y-auto text-center gap-16 md:gap-32 text-lg/10 md:text-2xl/14 items-center scrollbar-hide"
-			}
+			className="w-full h-[90vh] overflow-y-auto scrollbar-hide"
+			onClick={() => {
+				if (pinnedImage) {
+					setPinnedImage(null);
+				}
+			}}
 		>
-			{view === "images"
-				? images.map((image) => (
-						<img
-							key={image}
-							className="w-full md:w-[500px] hover:w-full shadow-lg grayscale-100 hover:grayscale-0 transition-all ease-out duration-[0.5s] cursor-[url('/init_cursor_hover.svg'),_pointer]"
-							src={image}
-							alt={`app-${choice}`}
-							onError={(e) => {
-								e.currentTarget.src = "/img.png";
-							}}
-						/>
-					))
-				: paragraphs.map((paragraph) => paragraph)}
+			<div
+				className={
+					"flex flex-col w-[45vw] items-center mx-auto text-center gap-16 md:gap-32 text-lg/10 md:text-2xl/14"
+				}
+			>
+				{view === "images"
+					? images.map((image) => {
+							const isPinned = pinnedImage === image;
+							return (
+								<img
+									key={image}
+									className={`hover:grayscale-0 hover:w-full shadow-lg grayscale-100 transition-all ease-out duration-[0.5s] cursor-[url('/init_cursor_hover.svg'),_pointer] ${
+										isPinned ? "w-full grayscale-0" : "w-full md:w-[500px]"
+									}`}
+									src={image}
+									alt={`app-${choice}`}
+									onClick={(e) => handleImageClick(e, image)}
+									onError={(e) => {
+										e.currentTarget.src = "/img.png";
+									}}
+								/>
+							);
+						})
+					: paragraphs.map((paragraph) => paragraph)}
+			</div>
 		</div>
 	);
 }
