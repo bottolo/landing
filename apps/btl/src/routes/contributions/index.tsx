@@ -14,10 +14,30 @@ function RouteComponent() {
 			<p>a brief list of people i've worked with:</p>
 
 			<div className={"flex flex-col gap-8"}>
-				<a href={"https://github.com/azazellus"}>azazello</a>
-				<a href={"https://github.com/FrankieBortot"}>frankie</a>
-				<a href={"https://github.com/riccardopestrin"}>verso</a>
-				<a href={"https://github.com/roxmysox"}>roxanne</a>
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/azazellus"}
+				>
+					azazello
+				</a>
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/FrankieBortot"}
+				>
+					frankie
+				</a>
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/riccardopestrin"}
+				>
+					verso
+				</a>
+				<a
+					className={"cursor-[url('/init_cursor_hover.svg'),_pointer]"}
+					href={"https://github.com/roxmysox"}
+				>
+					roxanne
+				</a>
 			</div>
 		</div>
 	);

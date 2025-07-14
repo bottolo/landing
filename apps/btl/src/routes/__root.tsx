@@ -15,6 +15,7 @@ export const Route = createRootRoute({
 	component: () => {
 		const location = useLocation();
 		const [isMuted, setIsMuted] = useState(false);
+		const [theme, setTheme] = useState<"ascension" | "limbo">("ascension");
 
 		const { view, setView } = useOptionsStore();
 
@@ -132,7 +133,7 @@ export const Route = createRootRoute({
 				<div
 					className={cn(
 						"absolute left-0 h-full w-1/6 md:w-1/4 z-0  transition-all duration-[1s]",
-						view === "text" ? "invert" : "",
+						theme === "limbo" ? "invert" : "",
 						isMuted ? "opacity-50" : "opacity-100",
 					)}
 					style={{
@@ -156,7 +157,7 @@ export const Route = createRootRoute({
 				<div
 					className={cn(
 						"absolute right-0 h-full w-1/6 md:w-1/4 z-0 rotate-180 transition-all duration-[1s]",
-						view === "text" ? "invert" : "",
+						theme === "limbo" ? "invert" : "",
 						isMuted ? "opacity-50" : "opacity-100",
 					)}
 					style={{
@@ -227,10 +228,27 @@ export const Route = createRootRoute({
 						className={
 							"hover:bg-white/20 cursor-[url('/init_cursor_hover.svg'),_pointer]"
 						}
-						onClick={() => setView(view === "images" ? "text" : "images")}
+						onClick={() =>
+							setTheme(theme === "ascension" ? "limbo" : "ascension")
+						}
 					>
-						mode: {view === "images" ? "images" : "text"}
+						theme: {theme === "ascension" ? "ascension" : "limbo"}
 					</p>
+					{(location?.pathname.startsWith("/apps/") ||
+						location.pathname.startsWith("/games/")) && (
+						<>
+							{" "}
+							|
+							<p
+								className={
+									"hover:bg-white/20 cursor-[url('/init_cursor_hover.svg'),_pointer]"
+								}
+								onClick={() => setView(view === "images" ? "text" : "images")}
+							>
+								mode: {view === "images" ? "images" : "text"}
+							</p>
+						</>
+					)}
 				</footer>
 				<TanStackRouterDevtools />
 			</motion.div>
